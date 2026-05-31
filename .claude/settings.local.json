@@ -1,0 +1,12 @@
+{
+	"permissions": {
+		"allow": [
+			"Bash(bun run *)",
+			"mcp__svelte__svelte-autofixer",
+			"Bash(curl -s http://localhost:5173/)",
+			"Bash(curl -s http://localhost:5173/workshops/prompt-architecture)",
+			"Bash(curl -s http://localhost:5173/blog/llm-enterprise-deployment)"
+		]
+	},
+	"enabledMcpjsonServers": ["svelte"]
+}
