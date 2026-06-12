@@ -85,20 +85,24 @@
 				</dl>
 			</div>
 
-			<div class="inquiry-card">
-				<h3 class="inquiry-heading">Request the Syllabus</h3>
-				<p class="inquiry-body">
-					For institutions or organizations interested in this course—or a custom version for your
-					team—reach out for the full syllabus and scheduling options.
-				</p>
-				<a
-					href="mailto:{site.email}?subject=Syllabus Request: {data.metadata.title}"
-					class="btn-primary inquiry-btn"
-				>
-					Request Syllabus →
-				</a>
-				<p class="inquiry-note">Usually responds within 24 hours.</p>
-			</div>
+			{#if data.metadata.signupLink}
+				<div class="inquiry-card">
+					<h3 class="inquiry-heading">Request the Syllabus</h3>
+					<p class="inquiry-body">
+						For institutions or organizations interested in this course—or a custom version for your
+						team—reach out for the full syllabus and scheduling options.
+					</p>
+					<a
+						href={data.metadata.signupLink}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="btn-primary inquiry-btn"
+					>
+						Sign Up →
+					</a>
+					<p class="inquiry-note">Usually responds within 24 hours.</p>
+				</div>
+			{/if}
 		</aside>
 	</div>
 </div>

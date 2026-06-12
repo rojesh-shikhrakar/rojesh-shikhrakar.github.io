@@ -2,6 +2,7 @@
 title: 'Enterprise AI Deployment Strategy'
 duration: 'Full-day Workshop (8 hrs)'
 tag: 'For Leadership'
+takeaway: 'Build an organization-wide AI adoption roadmap your board can approve and your teams can execute in under 90 days.'
 tools: ['AI Risk Frameworks', 'ROI Modeling', 'Change Management']
 prerequisites: 'Leadership or senior management role. No technical background required.'
 maxParticipants: 25

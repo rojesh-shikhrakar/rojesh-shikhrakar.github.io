@@ -82,20 +82,24 @@
 				{/if}
 			</div>
 
-			<div class="inquiry-card">
-				<h3 class="inquiry-heading">Book This Workshop</h3>
-				<p class="inquiry-body">
-					Interested in bringing this program to your organization? Let's talk about your goals,
-					group size, and timeline.
-				</p>
-				<a
-					href="mailto:{site.email}?subject=Workshop Inquiry: {data.metadata.title}"
-					class="btn-primary inquiry-btn"
-				>
-					Send Inquiry →
-				</a>
-				<p class="inquiry-note">Usually responds within 24 hours.</p>
-			</div>
+			{#if data.metadata.signupLink}
+				<div class="inquiry-card">
+					<h3 class="inquiry-heading">Book This Workshop</h3>
+					<p class="inquiry-body">
+						Interested in bringing this program to your organization? Let's talk about your goals,
+						group size, and timeline.
+					</p>
+					<a
+						href={data.metadata.signupLink}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="btn-primary inquiry-btn"
+					>
+						Sign Up →
+					</a>
+					<p class="inquiry-note">Usually responds within 24 hours.</p>
+				</div>
+			{/if}
 		</aside>
 	</div>
 </div>

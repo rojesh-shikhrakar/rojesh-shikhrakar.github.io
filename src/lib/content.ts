@@ -9,12 +9,14 @@ export interface ContentMeta {
 	author?: string;
 	excerpt?: string;
 	readTime?: string;
-	// Workshops
+	// Workshops & Courses
 	duration?: string;
 	tag?: string;
 	tools?: string[];
 	prerequisites?: string;
 	maxParticipants?: number;
+	signupLink?: string;
+	takeaway?: string;
 	// Courses
 	institution?: string;
 	audience?: string;

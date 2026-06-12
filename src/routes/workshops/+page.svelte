@@ -1,7 +1,10 @@
 <script lang="ts">
-	import { highlightedWorkshops, pastWorkshops, site } from '$lib/data/site';
-	import { Seo, SectionHeader, WorkshopCard } from '$lib';
+	import type { PageData } from './$types';
+	import { pastWorkshops, site } from '$lib/data/site';
+	import { Seo, SectionHeader, WorkshopCard, PastWorkshopsCarousel } from '$lib';
 	import { reveal } from '$lib/actions/reveal';
+
+	let { data }: { data: PageData } = $props();
 
 	// Newest first; recurring/ongoing engagements (high year) surface at the top.
 	const pastSorted = [...pastWorkshops].sort((a, b) => b.year - a.year);
@@ -39,7 +42,7 @@
 		body="Three core programs, each designed for a specific audience and organizational objective. Custom programs available for organizations with specific requirements."
 	/>
 	<div class="grid-three">
-		{#each highlightedWorkshops as workshop, i (workshop.slug)}
+		{#each data.workshops as workshop, i (workshop.slug)}
 			<WorkshopCard
 				tag={workshop.tag}
 				title={workshop.title}
@@ -94,37 +97,7 @@
 			title="Past Workshops & Training"
 			body="A selection of workshops, trainings, and seminars delivered across universities, enterprises, government bodies, and public institutions."
 		/>
-		<div class="past-grid">
-			{#each pastSorted as item, i (item.title)}
-				<article class="past-card" use:reveal={{ delay: (i % 3) * 80 }}>
-					<div class="past-media tone-{i % 4}">
-						{#if item.image}
-							<img src={item.image} alt={item.title} loading="lazy" />
-						{:else}
-							<svg class="past-icon" viewBox="0 0 24 24" aria-hidden="true">
-								<path
-									d="M4 4h16v11H4zM2 15h20M9 20h6M12 17v3"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="1.6"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-								/>
-								<circle cx="12" cy="9.5" r="2.2" fill="currentColor" />
-							</svg>
-						{/if}
-						<span class="past-date">{item.date}</span>
-					</div>
-					<div class="past-body">
-						<h3 class="past-title">{item.title}</h3>
-						<p class="past-org">{item.org}</p>
-						{#if item.note}
-							<p class="past-note">{item.note}</p>
-						{/if}
-					</div>
-				</article>
-			{/each}
-		</div>
+		<PastWorkshopsCarousel items={pastSorted} />
 	</div>
 </section>
 
@@ -230,105 +203,6 @@
 		margin: 0;
 	}
 
-	/* ---- Past Workshops ---- */
-	.past-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
-		gap: 1.5rem;
-	}
-
-	.past-card {
-		display: flex;
-		flex-direction: column;
-		background: var(--color-bg-secondary);
-		border: 1px solid var(--color-border);
-		border-radius: var(--radius-xl);
-		overflow: hidden;
-		box-shadow: var(--shadow-sm);
-		transition: var(--transition-smooth);
-	}
-
-	.past-card:hover {
-		transform: translateY(-4px);
-		border-color: var(--color-enterprise-accent);
-		box-shadow: var(--shadow-lg);
-	}
-
-	.past-media {
-		position: relative;
-		height: 8.5rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		color: rgba(255, 255, 255, 0.92);
-		overflow: hidden;
-	}
-
-	.past-media img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
-
-	.past-icon {
-		width: 2.75rem;
-		height: 2.75rem;
-		opacity: 0.85;
-	}
-
-	/* Gradient placeholders (used until a cover image is supplied) */
-	.tone-0 {
-		background: linear-gradient(135deg, #2563eb, #1e40af);
-	}
-	.tone-1 {
-		background: linear-gradient(135deg, #059669, #047857);
-	}
-	.tone-2 {
-		background: linear-gradient(135deg, #7c3aed, #5b21b6);
-	}
-	.tone-3 {
-		background: linear-gradient(135deg, #0f172a, #334155);
-	}
-
-	.past-date {
-		position: absolute;
-		top: 0.75rem;
-		left: 0.75rem;
-		font-size: 0.72rem;
-		font-weight: 700;
-		color: #fff;
-		background: rgba(15, 23, 42, 0.55);
-		backdrop-filter: blur(4px);
-		padding: 0.25rem 0.65rem;
-		border-radius: var(--radius-full);
-	}
-
-	.past-body {
-		display: flex;
-		flex-direction: column;
-		gap: 0.3rem;
-		padding: 1.1rem 1.25rem 1.35rem;
-	}
-
-	.past-title {
-		font-size: 1rem;
-		line-height: 1.35;
-		color: var(--color-text-heading);
-	}
-
-	.past-org {
-		font-size: 0.85rem;
-		font-weight: 600;
-		color: var(--color-enterprise-blue);
-		margin: 0;
-	}
-
-	.past-note {
-		font-size: 0.8rem;
-		line-height: 1.5;
-		color: var(--color-text-muted);
-		margin: 0.15rem 0 0;
-	}
 
 	.custom-workshop-block {
 		display: grid;

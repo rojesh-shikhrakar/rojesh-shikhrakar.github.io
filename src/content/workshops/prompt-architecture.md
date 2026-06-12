@@ -2,6 +2,7 @@
 title: 'Prompt Architecture & Workflow Adaptation'
 duration: 'Half-day Intensive (4 hrs)'
 tag: 'Most Popular'
+takeaway: 'Equip your team to automate 5 hours of administrative work per week—securely, without sacrificing data governance.'
 tools: ['ChatGPT', 'Claude Projects', 'Custom GPTs', 'NotebookLM']
 prerequisites: 'No coding required. Basic familiarity with ChatGPT or similar tools.'
 maxParticipants: 30

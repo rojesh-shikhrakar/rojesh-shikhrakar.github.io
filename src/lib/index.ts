@@ -7,6 +7,7 @@ export { default as ResearchCard } from './components/ResearchCard.svelte';
 export { default as CourseTable } from './components/CourseTable.svelte';
 export { default as CourseCard } from './components/CourseCard.svelte';
 export { default as Carousel } from './components/Carousel.svelte';
+export { default as PastWorkshopsCarousel } from './components/PastWorkshopsCarousel.svelte';
 export { default as Giscus } from './components/Giscus.svelte';
 
 // Actions & data helpers

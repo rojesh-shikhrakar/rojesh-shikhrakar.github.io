@@ -2,6 +2,7 @@
 title: 'AI for Research & Academic Excellence'
 duration: 'Two-day Program (16 hrs)'
 tag: 'For Institutions'
+takeaway: 'Transform your research workflow with AI tools that accelerate literature review, data analysis, and manuscript preparation.'
 tools: ['Perplexity', 'Elicit', 'ResearchRabbit', 'NotebookLM', 'Claude']
 prerequisites: 'Active research role or graduate student status. Familiarity with academic databases (Google Scholar, PubMed, or equivalent).'
 maxParticipants: 25
