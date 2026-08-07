@@ -56,9 +56,9 @@
 				/>
 			</div>
 			<div class="hero-stat-badges">
-				<span class="stat-badge">500+ Professionals Trained</span>
-				<span class="stat-badge">12+ Enterprise Cohorts</span>
-				<span class="stat-badge">KU Faculty · Fusemachines</span>
+				<span class="stat-badge">15000+ Professionals Trained</span>
+				<span class="stat-badge">100+ Cohorts</span>
+				<span class="stat-badge">Fusemachines · KU Faculty</span>
 			</div>
 		</div>
 	</div>

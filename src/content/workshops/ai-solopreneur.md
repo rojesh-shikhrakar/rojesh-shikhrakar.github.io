@@ -4,7 +4,7 @@ duration: '4 weeks (8-10 hrs)'
 tag: 'For Entrepreneurs'
 takeaway: 'Master AI tools and workflows that let you scale your solo business without hiring—from automating operations to augmenting your offerings.'
 tags: ['Startup AI', 'MLOps', 'AI Strategy']
-tools: ['ChatGPT', 'Gemini', 'Claude', 'NotebookLM', 'Manus']
+tools: ['ChatGPT', 'Gemini', 'Claude', 'NotebookLM', 'Manus', 'Canva']
 prerequisites: 'Have business knowledge and Google Workspace Familiarity'
 maxParticipants: 25
 signupLink: 'https://forms.gle/Vvu5EEpZQRzhUVsh8'
