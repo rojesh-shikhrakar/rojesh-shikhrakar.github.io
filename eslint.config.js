@@ -1,12 +1,10 @@
 import prettier from 'eslint-config-prettier';
 import path from 'node:path';
-import { includeIgnoreFile } from '@eslint/compat';
 import js from '@eslint/js';
 import svelte from 'eslint-plugin-svelte';
-import { defineConfig } from 'eslint/config';
+import { defineConfig, includeIgnoreFile } from 'eslint/config';
 import globals from 'globals';
 import ts from 'typescript-eslint';
-import svelteConfig from './svelte.config.js';
 
 const gitignorePath = path.resolve(import.meta.dirname, '.gitignore');
 
@@ -31,20 +29,18 @@ export default defineConfig(
 			parserOptions: {
 				projectService: true,
 				extraFileExtensions: ['.svelte'],
-				parser: ts.parser,
-				svelteConfig
+				parser: ts.parser
 			}
 		}
 	},
 	{
-		// Override or add rule settings here, such as:
-		// 'svelte/button-has-type': 'error'
+		files: ['**/*.svelte'],
 		rules: {
-			// This project deploys as a static site and uses plain root-relative
-			// links throughout. resolve() is only required when serving under a
-			// non-empty base path; we opt out of the rule to keep the established
-			// href convention rather than threading resolve() through every link.
-			'svelte/no-navigation-without-resolve': 'off'
+			// ponytail: every <a href> that isn't resolve()'d here is mailto: or an
+			// external URL, which the rule can't tell apart from an internal path once
+			// the href is an expression. This is a user Pages site, so `base` is always
+			// '' — internal links still go through resolve() by convention.
+			'svelte/no-navigation-without-resolve': ['error', { ignoreLinks: true }]
 		}
 	}
 );

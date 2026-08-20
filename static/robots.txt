@@ -1,5 +1,4 @@
-# allow crawling everything by default
 User-agent: *
-Disallow:
+Allow: /
 
-Sitemap: https://rojesh.com.np/sitemap.xml
+Sitemap: https://rojesh-shikhrakar.github.io/sitemap.xml

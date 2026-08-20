@@ -15,7 +15,7 @@ To recreate this project with the same configuration:
 
 ```sh
 # recreate this project
-bun x sv@0.15.3 create --template minimal --types ts --add prettier eslint sveltekit-adapter="adapter:static" mcp="ide:claude-code,vscode+setup:remote" --install bun rojesh-shikhrakar
+bun x sv@0.17.0 create --template minimal --types ts --add prettier eslint vitest="usages:unit,component" playwright tailwindcss="plugins:typography,forms" sveltekit-adapter="adapter:static" mdsvex ai-tools="ide:claude-code,vscode,other+delivery:plugin+tools:mcp,svelte-code-writer,svelte-core-bestpractices,svelte-file-editor+mcpSetup:remote" --install bun .
 ```
 
 ## Developing

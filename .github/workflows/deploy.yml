@@ -3,6 +3,16 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: 'main'
+    paths-ignore:
+      - '**.md'
+      - '.claude/**'
+      - '.github/**'
+      - '!.github/workflows/deploy.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   build_site:
@@ -11,31 +21,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # If you're using pnpm, add this step then change the commands and cache key below to use `pnpm`
-      # - name: Install pnpm
-      #   uses: pnpm/action-setup@v3
-      #   with:
-      #     version: 8
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: 20
-          cache: npm
+          bun-version: latest
 
       - name: Install dependencies
-        run: npm i
+        run: bun install --frozen-lockfile
 
-      - name: build
-        env:
-          BASE_PATH: '/${{ github.event.repository.name }}'
-        run: |
-          npm run build
+      # ponytail: caches vite's transform cache so unchanged routes rebuild fast
+      - uses: actions/cache@v4
+        with:
+          path: node_modules/.vite
+          key: vite-${{ hashFiles('bun.lock') }}-${{ github.sha }}
+          restore-keys: vite-${{ hashFiles('bun.lock') }}-
+
+      - name: Build
+        run: bun run build
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          # this should match the `pages` option in your adapter-static options
           path: 'build/'
 
   deploy:

@@ -1,439 +1,231 @@
 <script lang="ts">
-	import type { PageData } from './$types';
-	import { timeline, carouselSlides, highlightedWorkshops, research, site } from '$lib/data/site';
-	import { Seo, SectionHeader, WorkshopCard, ResearchCard, CourseCard, Carousel } from '$lib';
-	import { reveal } from '$lib/actions/reveal';
-	import { profile, imageMap } from '$lib/img/images';
+	import { mailto, siteUrl } from '$lib/site';
+	import Seo from '$lib/components/Seo.svelte';
+	import portrait from '$lib/assets/rojesh-portrait.webp';
+	import fellowship from '$lib/assets/photos/aifellowship-np-2026.webp';
 
-	let { data }: { data: PageData } = $props();
+	const programs = [
+		{
+			icon: '↗',
+			title: 'Executive Strategy',
+			body: 'Framing the AI opportunity for decision-makers. Focus on risk mitigation, investment ROI, and building a roadmap for responsible AI adoption across the enterprise.',
+			items: ['Leadership Workshops', 'Policy Frameworks', 'Cultural & Strategic Alignment']
+		},
+		{
+			icon: '✦',
+			title: 'Productivity Labs',
+			body: 'Hands-on implementation of LLMs and generative tools. We focus on specific job roles and workflows, ensuring that AI becomes a co-pilot, not a distraction.',
+			items: ['Workflow Automation', 'Prompt Engineering', 'Tool Stack Optimization']
+		},
+		{
+			icon: '▤',
+			title: 'Academic Programs',
+			body: 'Integrating AI into higher education curricula. Designing pedagogical approaches that maintain academic integrity while preparing students for an AI-native workforce.',
+			items: ['Curriculum Design', 'Faculty Upskilling', 'Student Readiness']
+		}
+	];
+	const method = [
+		['Diagnose', 'Assess organizational readiness and identify high-impact AI use cases.'],
+		['Design', 'Create a custom curriculum that maps AI tools to specific job functions.'],
+		['Facilitate', 'Lead hands-on training focused on practical application.'],
+		['Build', 'Develop internal AI guidelines and standard operating procedures.'],
+		['Transfer', 'Establish internal champions who sustain and grow AI capability.']
+	];
+	const engagements = [
+		['Fusemachines Inc.', 'Director of AI Education & Talent Development'],
+		['Kathmandu University', 'Subject Committee Member, Visiting Faculty'],
+		['Industry Integrated Degree (IID by NASIT-NOU)', 'Subject Committee Member'],
+		['Australia Awards', 'Capability Building Programs']
+	];
 
-	const slides = carouselSlides.map((s) => ({
-		img: imageMap[s.image as keyof typeof imageMap],
-		workshop: s.workshop,
-		client: s.client,
-		metric: s.metric
-	}));
-
-	const websiteLd = {
+	const personSchema = {
 		'@context': 'https://schema.org',
-		'@type': 'WebSite',
-		name: site.name,
-		url: site.url
+		'@type': 'Person',
+		name: 'Rojesh Man Shikhrakar',
+		url: siteUrl,
+		image: `${siteUrl}${portrait}`,
+		jobTitle: 'AI Trainer, Educator & Consultant',
+		description:
+			'AI trainer and consultant based in Kathmandu, Nepal, delivering corporate AI training, workshops, and machine learning education.',
+		address: {
+			'@type': 'PostalAddress',
+			addressLocality: 'Kathmandu',
+			addressCountry: 'NP'
+		},
+		worksFor: { '@type': 'Organization', name: 'Fusemachines' },
+		knowsAbout: [
+			'Artificial Intelligence',
+			'Machine Learning',
+			'Generative AI',
+			'Large Language Models',
+			'AI Training',
+			'AI Strategy',
+			'Prompt Engineering',
+			'Data Science'
+		],
+		sameAs: [
+			'https://www.linkedin.com/in/rojesh-shikhrakar/',
+			'https://github.com/rojesh-shikhrakar'
+		]
 	};
-
-	const researchIntro =
-		'This research is what separates structured, evidence-based AI education from "prompt enthusiasts." Every curriculum I deliver is backed by peer-reviewed work in computer vision, LLM safety, and applied machine learning.';
 </script>
 
-<Seo jsonLd={websiteLd} />
+<Seo
+	title="AI Trainer & Consultant in Kathmandu, Nepal | Rojesh Man Shikhrakar"
+	description="Rojesh Man Shikhrakar is an AI trainer, engineer and consultant based in Kathmandu, Nepal, delivering corporate AI training, workshops and machine learning programs across Nepal and beyond."
+	image={portrait}
+	type="profile"
+	jsonLd={personSchema}
+/>
 
-<!-- ============================ HERO ============================ -->
-<section class="hero-section">
-	<div class="hero-inner">
+<main id="main-content">
+	<section class="hero container">
 		<div class="hero-copy">
-			<span class="hero-eyebrow" use:reveal
-				>Educator · Engineer · Consultant </span>
-			<h1 class="hero-name" use:reveal={{ delay: 80 }}>{site.name}</h1>
-			<p class="hero-tagline" use:reveal={{ delay: 160 }}>
-				I turn AI complexity into organizational capability.
+			<p class="eyebrow">AI Trainer, Engineer & Consultant &middot; Kathmandu, Nepal</p>
+			<h1>Empowering Humans, Accelerated by AI</h1>
+			<p class="lead">
+				I have spent a decade deploying AI solutions to production. Bridging the gap between
+				frontier technology and human talent. I design and deliver high-impact AI training programs
+				and systems from school level to enterprise, from basic AI literacy to AI research and
+				engineering.
 			</p>
-			<p class="hero-body" use:reveal={{ delay: 240 }}>
-				Training 15000+ students & professionals across enterprise cohorts, government ministries, and academic institutions. Based in Nepal. Operating globally.
+		</div>
+		<div class="portrait-wrap">
+			<img class="portrait" src={portrait} alt="Rojesh Man Shikhrakar" width="336" height="513" />
+			<!-- <div class="availability"><span></span></div> -->
+		</div>
+		<div class="button-row">
+			<a class="button" href={mailto('AI training program')}>Discuss a Training Program</a><a
+				class="button button-secondary"
+				href="/programs">Explore Expertise</a
+			>
+		</div>
+	</section>
+
+	<section class="proof" aria-label="Professional highlights">
+		<div class="proof-grid container">
+			<div>
+				<strong>Director of AI Education & Talent Development</strong><span>at Fusemachines</span>
+			</div>
+			<div>
+				<strong>Visiting Faculty</strong><span>at Kathmandu University, NIST, Islignton</span>
+			</div>
+			<div><strong>1,500+</strong><span>AI engineers trained</span></div>
+			<div><strong>15+</strong><span>countries reached</span></div>
+		</div>
+	</section>
+
+	<section class="section positioning" id="expertise">
+		<div class="reading-width">
+			<h2>True AI capability comes from a shift in human problem-solving</h2>
+			<div class="short-rule"></div>
+			<p class="lead">
+				AI capability is not built through tool demonstrations. It comes from new mental models,
+				workflow redesign, and continuous learning. Tools only amplify your current habits; your
+				daily thinking must change before your results do.
 			</p>
-			<div class="hero-ctas" use:reveal={{ delay: 320 }}>
-				<a href="/workshops" class="btn-primary">Explore Workshops →</a>
-				<a href="/research" class="btn-outline">View Research</a>
+		</div>
+	</section>
+
+	<section class="section programs" id="programs">
+		<div class="container">
+			<div class="section-heading">
+				<p class="eyebrow">Core programs</p>
+				<h2>Practical AI programs for people who are expected to deliver results.</h2>
+			</div>
+			<div class="program-grid">
+				{#each programs as program (program.title)}<article class="program-card">
+						<div class="card-icon" aria-hidden="true">{program.icon}</div>
+						<h3>{program.title}</h3>
+						<p>{program.body}</p>
+						<ul>
+							{#each program.items as item (item)}<li><span>✓</span>{item}</li>{/each}
+						</ul>
+					</article>{/each}
 			</div>
 		</div>
-		<div class="hero-visual" use:reveal={{ delay: 200 }}>
-			<div class="profile-frame">
-				<enhanced:img
-					src={profile}
-					alt={site.name}
-					class="profile-image"
-					sizes="220px"
-					fetchpriority="high"
-				/>
+	</section>
+
+	<section class="section impact container" id="impact">
+		<article class="impact-row">
+			<div>
+				<p class="eyebrow">Institutional impact</p>
+				<h2>Fusemachines AI Fellowship</h2>
+				<p>
+					Leading the educational strategy for Fusemachines' flagship AI fellowship programs. We
+					have scaled technical education to thousands of learners across 15+ countries, creating a
+					new pipeline of AI talent for the global market. In addition to this, I have designed and
+					delivered foundation, microdegree in AI, microdegree specialization courses for AI
+					engineers and researchers, and AI literacy programs for non-technical professionals. For
+					More Info: <a href="https://fuse.ai/" target="_blank" rel="noopener noreferrer">fuse.ai</a
+					>
+				</p>
+				<div class="tags"><span>Strategic lead</span><span>15+ countries</span></div>
 			</div>
-			<div class="hero-stat-badges">
-				<span class="stat-badge">15000+ Professionals Trained</span>
-				<span class="stat-badge">100+ Cohorts</span>
-				<span class="stat-badge">Fusemachines · KU Faculty</span>
+			<img
+				src={fellowship}
+				alt="AI Fellowship Nepal 2026 Cohort"
+				width="560"
+				height="315"
+				loading="lazy"
+			/>
+		</article>
+		<article class="impact-row reverse">
+			<img
+				src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsJJRpjoG01c-3PO4iNYND0-DdWfOOXAsVHT_5zVld2gAB0rpC9PSHVT7p8bzCBUYw12muxLcK8uQDFwyFOWtG6yp2ikv_5MC-SxmjBsh8cMJq71JoLx-DQiQHviGCtCWqC6mdQ_Aog-E6qfWSI9yvHHaJ9Eh-VExUUsgCHYx3ZkucIse32-Cidq2ED9rrVMiGhJjAbF5T6tn8A9p_QTEPoWFBOd5E23fcdDa6gTCFfs-SRo9qrPUe"
+				alt="Academic notebook and lectern in a university hall"
+				width="560"
+				height="315"
+				loading="lazy"
+			/>
+			<div>
+				<p class="eyebrow">Academic leadership</p>
+				<h2>Curriculum Committee and Visiting Faculty</h2>
+				<p>
+					Bridging academia and industry. As a subject committee member at Kathmandu University (KU)
+					and Industry Integrated Degree (IID by NOU-NASIT), I provide insights to curriculum that
+					translates engineering AI practices and research into actionable knowledge, preparing the
+					next generation for the ethical and practical challenges of the AI era.
+				</p>
+				<a class="text-link" href="#engagements">View selected engagements <span>→</span></a>
+			</div>
+		</article>
+	</section>
+
+	<section class="section method" id="method">
+		<div class="container">
+			<div class="section-heading">
+				<p class="eyebrow">The framework</p>
+				<h2>A capability-building method designed for transfer.</h2>
+			</div>
+			<div class="method-grid">
+				{#each method as step, index (step[0])}<article>
+						<span class="step-number">0{index + 1}</span>
+						<h3>{step[0]}</h3>
+						<p>{step[1]}</p>
+					</article>{/each}
 			</div>
 		</div>
-	</div>
-</section>
-
-<!-- ============================ TIMELINE ============================ -->
-<section class="section">
-	<SectionHeader
-		eyebrow="Experience & Institutional Trust"
-		title="A Decade Bridging AI Engineering & Education"
-		body="From building production AI ML systems to designing curricula adopted across South Asia, my work sits at the intersection of rigorous research & development and real-world impact. "
-	/>
-
-
-		<div class="section-copy" use:reveal={{ delay: 120 }}>
-			<h3 class="timeline-heading">Career Timeline</h3>
-			<ul class="timeline-list">
-				{#each timeline as item (item.role)}
-					<li class="timeline-item">
-						<span class="timeline-marker"></span>
-						<div class="timeline-copy">
-							<div class="timeline-meta">
-								<strong>{item.period}</strong> · {item.location}
-								<span class="badge badge-{item.badge.toLowerCase()}">{item.badge}</span>
-							</div>
-							<div class="timeline-role">{item.role} — {item.org}</div>
-							<p class="timeline-impact">{item.impact}</p>
-						</div>
-					</li>
-				{/each}
-			</ul>
+	</section>
+	<section class="section container" id="engagements">
+		<div class="engagement-heading">
+			<h2>Selected Engagements</h2>
+			<span>Partners & collaborators</span>
 		</div>
-</section>
-
-<!-- ============================ CAROUSEL ============================ -->
-<section class="section section-alt">
-	<div class="inner-wrap">
-		<SectionHeader
-			eyebrow="Live Workshops"
-			title="Commanding the Room, Delivering Results"
-			body="Every workshop is a live, facilitated experience—no pre-recorded videos, no passive lectures. Participants leave with working systems and measurable changes to their workflow."
-		/>
-		<Carousel {slides} />
-	</div>
-</section>
-
-<!-- ============================ HIGHLIGHTED WORKSHOPS ============================ -->
-<section class="section">
-	<div class="inner-wrap">
-		<SectionHeader
-			eyebrow="Workshops Catalog"
-			title="Signature Corporate Training Programs"
-			body="Grounded in rigorous academic frameworks, optimized for rapid corporate execution."
-		/>
-		<div class="grid-three">
-			{#each highlightedWorkshops as workshop, i (workshop.slug)}
-				<WorkshopCard
-					tag={workshop.tag}
-					title={workshop.title}
-					duration={workshop.duration}
-					takeaway={workshop.takeaway}
-					tools={workshop.tools}
-					href="/workshops/{workshop.slug}"
-					delay={i * 90}
-				/>
-			{/each}
+		<div class="engagement-list">
+			{#each engagements as engagement (engagement[0])}<div>
+					<strong>{engagement[0]}</strong><span>{engagement[1]}</span>
+				</div>{/each}
 		</div>
-	</div>
-</section>
-
-<!-- ============================ COURSES ============================ -->
-<section class="section section-alt">
-	<div class="inner-wrap">
-		<SectionHeader
-			eyebrow="Curriculum"
-			title="Courses Taught & Offered"
-			body="Each course is designed with clear learning outcomes, industry-relevant tools, and assessments that reflect real-world problem-solving."
-		/>
-		<div class="courses-grid">
-			{#each data.courses as course, i (course.slug)}
-				<CourseCard
-					index={i}
-					title={course.title}
-					institution={course.institution ?? ''}
-					audience={course.audience ?? ''}
-					level={course.level ?? ''}
-					format={course.format ?? ''}
-					slug={course.slug}
-					delay={i * 80}
-				/>
-			{/each}
+	</section>
+	<section class="section container">
+		<div class="closing-cta">
+			<h2>Build AI capability that lasts beyond the session.</h2>
+			<p class="lead">
+				Let’s discuss how we can tailor an AI training program to your organization’s needs and
+				strategic objectives.
+			</p>
+			<a class="button" href={mailto('Strategy call')}>Book a Strategy Call</a>
 		</div>
-		<div class="courses-cta">
-			<a href="/courses" class="btn-primary">View All Courses & Teaching Philosophy →</a>
-		</div>
-	</div>
-</section>
-
-<!-- ============================ RESEARCH ============================ -->
-<section class="section section-contrast">
-	<div class="inner-wrap">
-		<SectionHeader
-			eyebrow="Research & Innovation"
-			title="The Technical Moat"
-			body={researchIntro}
-			onContrast
-		/>
-		<div class="research-grid">
-			{#each research as paper, i (paper.slug)}
-				<ResearchCard {paper} variant="compact" delay={i * 90} />
-			{/each}
-		</div>
-		<div class="research-cta">
-			<a href="/research" class="btn-primary">View All Research →</a>
-		</div>
-	</div>
-</section>
-
-<style>
-	/* ---- Hero ---- */
-	.hero-section {
-		position: relative;
-		background: var(--color-enterprise-slate);
-		margin: 0 -1.5rem;
-		padding: 5.5rem 1.5rem 4.5rem;
-		overflow: hidden;
-	}
-
-	.hero-section::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		background:
-			radial-gradient(40rem 28rem at 78% 18%, rgba(37, 99, 235, 0.28), transparent 60%),
-			radial-gradient(34rem 24rem at 12% 92%, rgba(5, 150, 105, 0.22), transparent 55%);
-		pointer-events: none;
-	}
-
-	.hero-inner {
-		position: relative;
-		max-width: var(--max-width-canvas);
-		margin: 0 auto;
-		display: grid;
-		grid-template-columns: 1fr auto;
-		gap: 3rem;
-		align-items: center;
-	}
-
-	.hero-copy {
-		max-width: 38rem;
-	}
-
-	.hero-eyebrow {
-		display: inline-block;
-		font-size: 0.8rem;
-		font-weight: 600;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-		color: var(--color-enterprise-accent-hover);
-		margin-bottom: 1rem;
-	}
-
-	.hero-name {
-		font-size: var(--text-h1);
-		font-family: var(--font-display);
-		color: #f8fafc;
-		line-height: 1.05;
-		margin-bottom: 1rem;
-	}
-
-	.hero-tagline {
-		font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-		font-weight: 700;
-		color: #cbd5e1;
-		margin-bottom: 0.75rem;
-	}
-
-	.hero-body {
-		font-size: 1rem;
-		line-height: 1.8;
-		color: #94a3b8;
-		margin-bottom: 2rem;
-	}
-
-	.hero-ctas {
-		display: flex;
-		gap: 1rem;
-		flex-wrap: wrap;
-		align-items: center;
-	}
-
-	.hero-ctas :global(.btn-primary) {
-		background: var(--color-enterprise-accent);
-		color: #fff;
-	}
-
-	.hero-ctas :global(.btn-primary:hover) {
-		background: var(--color-enterprise-accent-hover);
-	}
-
-	.btn-outline {
-		display: inline-flex;
-		align-items: center;
-		padding: 0.9rem 1.75rem;
-		border-radius: var(--radius-xl);
-		border: 2px solid #475569;
-		color: #f8fafc;
-		font-weight: 700;
-		text-decoration: none;
-		transition: var(--transition-smooth);
-	}
-
-	.btn-outline:hover {
-		border-color: var(--color-enterprise-accent);
-		color: var(--color-enterprise-accent-hover);
-		transform: translateY(-2px);
-	}
-
-	.hero-visual {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 1.25rem;
-	}
-
-	.profile-frame {
-		width: 220px;
-		height: 220px;
-		border-radius: 50%;
-		overflow: hidden;
-		border: 4px solid var(--color-enterprise-accent);
-		box-shadow: var(--ring-accent);
-	}
-
-	.profile-frame :global(.profile-image) {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
-
-	.hero-stat-badges {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-		align-items: center;
-	}
-
-	.stat-badge {
-		font-size: 0.75rem;
-		font-weight: 600;
-		background: rgba(255, 255, 255, 0.08);
-		color: #cbd5e1;
-		border: 1px solid rgba(255, 255, 255, 0.12);
-		border-radius: var(--radius-full);
-		padding: 0.35rem 0.85rem;
-		white-space: nowrap;
-	}
-
-	/* ---- Shared ---- */
-	.inner-wrap {
-		max-width: var(--max-width-canvas);
-		margin: 0 auto;
-	}
-
-	.authority-title {
-		font-size: var(--text-xl);
-		margin-bottom: 1rem;
-	}
-
-	.authority-body {
-		line-height: 1.8;
-		color: var(--color-text-body);
-		margin-bottom: 1.5rem;
-	}
-
-	.case-highlights {
-		display: grid;
-		gap: 1rem;
-	}
-
-	.case-item {
-		display: flex;
-		align-items: baseline;
-		gap: 0.75rem;
-		padding: 0.75rem 1rem;
-		background: var(--color-bg-primary);
-		border-radius: var(--radius-md);
-		border: 1px solid var(--color-border);
-	}
-
-	.case-num {
-		font-family: var(--font-display);
-		font-size: 1.75rem;
-		font-weight: 800;
-		color: var(--color-enterprise-blue);
-		min-width: 3rem;
-	}
-
-	.case-label-text {
-		font-size: 0.9rem;
-		color: var(--color-text-body);
-		line-height: 1.4;
-	}
-
-	.timeline-heading {
-		font-size: var(--text-xl);
-		margin-bottom: 1.25rem;
-		color: var(--color-text-heading);
-	}
-
-	.timeline-role {
-		font-weight: 700;
-		color: var(--color-text-heading);
-	}
-
-	.badge {
-		display: inline-block;
-		font-size: 0.65rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.08em;
-		padding: 0.2rem 0.55rem;
-		border-radius: var(--radius-full);
-		margin-left: 0.5rem;
-		vertical-align: middle;
-	}
-
-	.badge-current {
-		background: var(--tint-accent);
-		color: var(--color-enterprise-accent);
-	}
-
-	.badge-research {
-		background: var(--tint-blue);
-		color: var(--color-enterprise-blue);
-	}
-
-	.badge-education {
-		background: rgba(124, 58, 237, 0.14);
-		color: #8b5cf6;
-	}
-
-	.courses-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
-		gap: 1.5rem;
-	}
-
-	.courses-cta {
-		margin-top: 2rem;
-		text-align: center;
-	}
-
-	.research-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-		gap: 1.5rem;
-	}
-
-	.research-cta {
-		margin-top: 2rem;
-	}
-
-	@media (max-width: 768px) {
-		.hero-inner {
-			grid-template-columns: 1fr;
-		}
-
-		.hero-visual {
-			order: -1;
-		}
-
-		.profile-frame {
-			width: 160px;
-			height: 160px;
-		}
-	}
-</style>
+	</section>
+</main>
