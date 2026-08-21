@@ -70,7 +70,7 @@
 					{#if engagement.image}
 						<img src={engagement.image} alt="" width="320" height="200" loading="lazy" />
 					{/if}
-					<div class="entry-year">{engagement.year === 9999 ? 'Now' : engagement.year}</div>
+					<!-- <div class="entry-year">{engagement.year === 9999 ? 'Now' : engagement.year}</div> -->
 					<div class="entry-main">
 						<div class="entry-meta">
 							<span>{engagement.kind}</span>
@@ -192,14 +192,14 @@
 	}
 	.engagement-list article {
 		display: grid;
-		grid-template-columns: 5rem minmax(0, 1fr) auto;
+		grid-template-columns: minmax(0, 1fr) auto;
 		gap: clamp(1.25rem, 4vw, 4rem);
 		align-items: start;
 		padding-block: clamp(2rem, 4vw, 3.25rem);
 		border-bottom: 1px solid rgba(255, 255, 255, 0.14);
 	}
 	.engagement-list article.has-image {
-		grid-template-columns: 13rem 5rem minmax(0, 1fr) auto;
+		grid-template-columns: 15rem minmax(0, 1fr) auto;
 	}
 	.engagement-list img {
 		width: 100%;
@@ -207,12 +207,12 @@
 		border-radius: 0.35rem;
 		object-fit: cover;
 	}
-	.entry-year {
+	/* .entry-year {
 		padding-top: 0.3rem;
 		color: var(--bronze-light);
 		font-family: var(--serif);
 		font-size: 1.35rem;
-	}
+	} */
 	.entry-meta {
 		display: flex;
 		flex-wrap: wrap;
@@ -280,15 +280,15 @@
 		}
 		.engagement-list article,
 		.engagement-list article.has-image {
-			grid-template-columns: 3.3rem minmax(0, 1fr) auto;
+			grid-template-columns: minmax(0, 1fr) auto;
 			gap: 1rem;
 		}
 		.engagement-list img {
 			grid-column: 2 / -1;
 		}
-		.entry-year {
+		/* .entry-year {
 			font-size: 1.05rem;
-		}
+		} */
 		.entry-link span:first-child {
 			display: none;
 		}
