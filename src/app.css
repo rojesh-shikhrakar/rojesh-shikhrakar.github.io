@@ -953,9 +953,11 @@ h3 {
 	grid-template-columns: repeat(2, 1fr);
 	gap: clamp(3rem, 7vw, 6rem);
 }
-.books-grid article {
+.books-grid .book-card {
 	display: grid;
 	gap: 2rem;
+	color: inherit;
+	text-decoration: none;
 }
 .book-cover {
 	position: relative;
@@ -970,7 +972,8 @@ h3 {
 	object-fit: cover;
 	transition: transform 400ms ease;
 }
-.book-cover:hover img {
+.book-card:hover .book-cover img,
+.book-card:focus-visible .book-cover img {
 	transform: scale(1.025);
 }
 .book-cover span {
@@ -988,8 +991,12 @@ h3 {
 .books-grid h3 {
 	margin-bottom: 0.75rem;
 }
-.books-grid article > div:last-child > p {
+.books-grid .book-card > div:last-child > p {
 	color: var(--ink-soft);
+}
+.books-grid .book-card:focus-visible {
+	outline: 2px solid var(--teal);
+	outline-offset: 0.5rem;
 }
 .curriculum-grid {
 	display: grid;

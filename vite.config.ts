@@ -5,6 +5,15 @@ import { playwright } from '@vitest/browser-playwright';
 import adapter from '@sveltejs/adapter-static';
 import { sveltekit } from '@sveltejs/kit/vite';
 
+// To avoid the deprecation warning of mdsvex, temp solution to use <script module> instead of <script context="module">. 
+const modernizeMdsveXModuleScript = {
+	markup: ({ content, filename }: { content: string; filename?: string }) => {
+		if (!filename?.endsWith('.md') && !filename?.endsWith('.svx')) return;
+
+		return { code: content.replaceAll('<script context="module">', '<script module>') };
+	}
+};
+
 export default defineConfig({
 	plugins: [
 		tailwindcss(),
@@ -15,7 +24,7 @@ export default defineConfig({
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
 			adapter: adapter({ fallback: '404.html' }),
-			preprocess: [mdsvex({ extensions: ['.svx', '.md'] })],
+			preprocess: [mdsvex({ extensions: ['.svx', '.md'] }), modernizeMdsveXModuleScript],
 			extensions: ['.svelte', '.svx', '.md']
 		})
 	],

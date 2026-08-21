@@ -3,11 +3,12 @@
 	import Seo from '$lib/components/Seo.svelte';
 	const books = [
 		{
-			title: 'Neural Architectures: A Deep Dive',
+			title: 'The Human Advantage: What remains valuable when intelligence becomes abundant',
 			description:
-				'A rigorous guide to the mathematical foundations, implementation patterns, and design choices behind modern neural systems.',
+				'A monograph exploring the future of work, education, and human flourishing in an era of abundant machine intelligence.',
 			image:
-				'https://lh3.googleusercontent.com/aida-public/AB6AXuAVrJiMvlqJpQqV-Zo_fhTuBI2AdGQMowCLnC2sPk8b-EkejsZizkJSDYxOhLKAwFow1_1ETrf8jTi0UdoUzd2dWUHGDhA62ixI5Q967swvu9dvHBUlXHh3SPy91LIrawjR5suOmGxs5ImHMXuY3F1ZENY1K8i1Ii1DGiFZcWMtC-6Axc33oNkDGV3W1fdH5DpBMERuUj8FrNfQKB97T9LwRNtAPvVTEw0cri47V5iOgpsDlmncmZgg',
+				'https://res.cloudinary.com/w6ej7kot/image/upload/The_Human_Advantage_Book.png',
+			link: 'https://ha.rojeshshikhrakar.com.np/',
 			status: 'Forthcoming'
 		},
 		{
@@ -40,7 +41,7 @@
 			<h2>Authored Monographs</h2>
 		</div>
 		<div class="books-grid">
-			{#each books as book (book.title)}<article>
+			{#each books as book (book.title)}<a class="book-card" href={book.link ?? mailto(book.title)}>
 					<div class="book-cover">
 						<img
 							src={book.image}
@@ -53,9 +54,8 @@
 					<div>
 						<h3>{book.title}</h3>
 						<p>{book.description}</p>
-						<a class="text-link" href={mailto(book.title)}>Request details <span>→</span></a>
 					</div>
-				</article>{/each}
+				</a>{/each}
 		</div>
 	</section>
 	<section class="section curricula">
