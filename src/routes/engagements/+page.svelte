@@ -280,11 +280,12 @@
 		}
 		.engagement-list article,
 		.engagement-list article.has-image {
-			grid-template-columns: minmax(0, 1fr) auto;
+			grid-template-columns: 1fr;
 			gap: 1rem;
 		}
 		.engagement-list img {
-			grid-column: 2 / -1;
+			grid-column: 1;
+			width: 100%;
 		}
 		/* .entry-year {
 			font-size: 1.05rem;

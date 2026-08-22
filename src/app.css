@@ -141,7 +141,7 @@ a {
 	display: none;
 	position: relative;
 }
-.mobile-nav summary {
+.mobile-nav > summary {
 	display: grid;
 	width: 2.75rem;
 	height: 2.75rem;
@@ -150,7 +150,7 @@ a {
 	place-content: center;
 	gap: 4px;
 }
-.mobile-nav summary::-webkit-details-marker {
+.mobile-nav > summary::-webkit-details-marker {
 	display: none;
 }
 .mobile-nav summary span {
@@ -679,6 +679,10 @@ h3 {
 .mobile-nav-panel > details summary {
 	padding: 0.65rem 0.75rem;
 	cursor: pointer;
+	list-style: none;
+}
+.mobile-nav-panel > details summary::-webkit-details-marker {
+	display: none;
 }
 .mobile-nav-panel > details div {
 	display: grid;
