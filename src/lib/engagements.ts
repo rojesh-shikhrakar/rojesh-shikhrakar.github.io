@@ -1,4 +1,5 @@
-export type EngagementKind = 'Workshop' | 'Talk' | 'Panel' | 'Podcast' | 'Article' | 'Media';
+export type EngagementKind =
+	'Course' | 'Workshop' | 'Talk' | 'Panel' | 'Podcast' | 'Article' | 'Media';
 
 export type PastEngagement = {
 	title: string;
@@ -26,6 +27,34 @@ export type PastEngagement = {
 
 export const pastEngagements: PastEngagement[] = [
 	{
+		title: 'Data Acquisition and Management System',
+		kind: 'Course',
+		org: 'M.Tech Course · KU DoAI',
+		date: '2022, 2023, 2024',
+		year: 2024
+	},
+	{
+		title: 'Data Science',
+		kind: 'Course',
+		org: 'B.Tech in AI Course · KU DoAI',
+		date: '2023',
+		year: 2023
+	},
+	{
+		title: 'Artificial Intelligence',
+		kind: 'Course',
+		org: 'M.Sc. AI · Islington College — London Metropolitan University',
+		date: '2024, 2025',
+		year: 2025
+	},
+	{
+		title: 'Artificial Intelligence — BCA',
+		kind: 'Course',
+		org: 'NIST College · TU',
+		date: '2023, 2024, 2026',
+		year: 2026
+	},
+	{
 		title: 'AI for Influencing: Counter-Narratives to End Child Marriage in Asia',
 		kind: 'Workshop',
 		org: 'Plan International — Youth Action Lab',
@@ -45,7 +74,8 @@ export const pastEngagements: PastEngagement[] = [
 		href: 'https://actionfornepal.org/'
 	},
 	{
-		title: 'U.S.–Nepal Commercial Diplomacy Series, CEO Dialogue #3, Supporting Nepali Entrepreneurs through AI Readiness',
+		title:
+			'U.S.–Nepal Commercial Diplomacy Series, CEO Dialogue #3, Supporting Nepali Entrepreneurs through AI Readiness',
 		kind: 'Workshop',
 		org: 'Convened by Aadyanta Advisory and International Development Institute, with support from the U.S. Embassy Nepal',
 		date: 'July 10',
@@ -77,7 +107,8 @@ export const pastEngagements: PastEngagement[] = [
 		date: '8–9 June',
 		year: 2026,
 		location: 'Yellow Pagoda Hotel, Kathmandu',
-		image: 'https://res.cloudinary.com/w6ej7kot/image/upload/WhatsApp_Image_2026-06-11_at_5.53.52_PM.jpg',
+		image:
+			'https://res.cloudinary.com/w6ej7kot/image/upload/WhatsApp_Image_2026-06-11_at_5.53.52_PM.jpg',
 		href: 'https://mowcsc.gov.np/'
 	},
 	{
@@ -90,7 +121,8 @@ export const pastEngagements: PastEngagement[] = [
 		href: 'https://possiblehealth.org/'
 	},
 	{
-		title: 'Promoting academia-industry collaboration for higher education innovation in South Asia - 2026 Leadership Policy Dialogue in South Asia',
+		title:
+			'Promoting academia-industry collaboration for higher education innovation in South Asia - 2026 Leadership Policy Dialogue in South Asia',
 		kind: 'Panel',
 		org: 'UNESCO, TU, ADB & UNESCO-ICHEI',
 		date: '20ᵗʰ May',
@@ -344,6 +376,7 @@ export const pastEngagements: PastEngagement[] = [
 
 export const engagementKinds: Array<'All' | EngagementKind> = [
 	'All',
+	'Course',
 	'Workshop',
 	'Talk',
 	'Panel',

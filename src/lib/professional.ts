@@ -44,11 +44,20 @@ export const professionalRoles: ProfessionalRole[] = [
 			'I teach machine learning and help connect academic programs with current engineering practice.'
 	},
 	{
-		organization: 'Industry Integrated Degree (IID by NASIT–NOU)',
-		title: 'Subject Committee Member'
+		organization: 'Industry Integrated Degree (IID), NASIT & NOU',
+		title: 'AI Subject Committee Lead',
+		period: '2026 — Present',
+		summary:
+			'The first industry-integrated IT degree in Nepal, with a competency-driven curriculum.'
 	},
 	{
 		organization: 'Australia Awards',
 		title: 'Capability Building Programs'
+	},
+	{
+		organization: 'Nepal Speakers Bureau',
+		title: 'Senior AI Consultant',
+		period: '2022 — Present',
+		summary: 'Facilitated AI sessions for various organizations in Nepal.'
 	}
 ];

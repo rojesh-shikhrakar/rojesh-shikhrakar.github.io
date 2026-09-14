@@ -31,6 +31,21 @@
 			organization: professionalRoles[1].organization,
 			body: professionalRoles[1].summary,
 			icon: 'cap'
+		},
+		{
+			period: professionalRoles[2].period,
+			title: professionalRoles[2].title,
+			organization: professionalRoles[2].organization,
+			body: professionalRoles[2].summary,
+			icon: 'cap',
+			link: 'https://iid.nasit.org.np/'
+		},
+		{
+			period: professionalRoles[4].period,
+			title: professionalRoles[4].title,
+			organization: professionalRoles[4].organization,
+			body: professionalRoles[4].summary,
+			icon: 'building'
 		}
 	];
 
@@ -134,6 +149,9 @@
 					<h3>{mandate.title}</h3>
 					<p class="organization">{mandate.organization}</p>
 					<p>{mandate.body}</p>
+					{#if mandate.link}
+						<a href={mandate.link} target="_blank" rel="noopener noreferrer">Visit site →</a>
+					{/if}
 				</article>
 			{/each}
 		</div>
@@ -237,9 +255,6 @@
 		padding-block: clamp(4.5rem, 9vw, 7.5rem);
 		border-block: 1px solid var(--border);
 		background: #f2ede6;
-	}
-	.origin h2 {
-		max-width: 13ch;
 	}
 	.origin-copy {
 		display: grid;

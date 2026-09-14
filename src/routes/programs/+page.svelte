@@ -3,7 +3,10 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import { onMount, untrack } from 'svelte';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import EngagementDialog from '$lib/components/EngagementDialog.svelte';
+	import { pastEngagements, type PastEngagement } from '$lib/engagements';
 	import { webPageSchema } from '$lib/seo/schema';
+	import { tick } from 'svelte';
 	const breadcrumbs = [
 		{ name: 'Home', path: '/' },
 		{ name: 'Programs', path: '/programs' }
@@ -15,6 +18,10 @@
 	const tabIdOf = (category: Category): TabId =>
 		'tabId' in category ? category.tabId : category.slug;
 	let activeTab = $state<TabId>(untrack(() => tabIdOf(data.categories[0])));
+	const deliveredWorkshops = pastEngagements.filter((item) => item.kind === 'Workshop');
+	const deliveredCourses = pastEngagements.filter((item) => item.kind === 'Course');
+	let selectedEngagement = $state<PastEngagement | null>(null);
+	let detailsDialog = $state<HTMLDialogElement>();
 
 	const programsFor = (category: Category) =>
 		data.programs.filter((program) => program.category === category.slug);
@@ -38,6 +45,12 @@
 		event.preventDefault();
 		tabs[nextIndex]?.click();
 		tabs[nextIndex]?.focus();
+	}
+
+	async function showDetails(item: PastEngagement) {
+		selectedEngagement = item;
+		await tick();
+		detailsDialog?.showModal();
 	}
 
 	onMount(() => {
@@ -126,6 +139,27 @@
 						</div>
 					</article>
 				{/each}
+				{#if category.slug === 'courses' || category.slug === 'workshops'}
+					<section class="delivered-workshops">
+						<h2>
+							{category.slug === 'courses'
+								? 'Selected courses delivered'
+								: 'Selected workshops delivered'}
+						</h2>
+						<div class="delivered-list">
+							{#each category.slug === 'courses' ? deliveredCourses : deliveredWorkshops as item (`${item.kind}-${item.title}`)}
+								<article>
+									<span>{item.date ?? item.year}</span>
+									<div>
+										<h3>{item.title}</h3>
+										<p>{[item.org, item.location].filter(Boolean).join(' · ')}</p>
+									</div>
+									<button type="button" onclick={() => showDetails(item)}>View details →</button>
+								</article>
+							{/each}
+						</div>
+					</section>
+				{/if}
 			</div>
 		{/each}
 	</div>
@@ -145,3 +179,49 @@
 		</div>
 	</section>
 </main>
+
+<EngagementDialog engagement={selectedEngagement} bind:dialog={detailsDialog} />
+
+<style>
+	.delivered-workshops {
+		grid-column: 1 / -1;
+		margin-top: 1rem;
+		padding: clamp(2rem, 5vw, 4rem);
+		border-radius: 1rem;
+		background: #f2ede6;
+	}
+	.delivered-list article {
+		display: grid;
+		grid-template-columns: 10rem 1fr auto;
+		gap: 2rem;
+		padding: 1.2rem 0;
+		border-bottom: 1px solid var(--border);
+	}
+	.delivered-list span,
+	.delivered-list button {
+		color: var(--teal);
+		font-weight: 700;
+	}
+	.delivered-list h3 {
+		margin-bottom: 0.2rem;
+	}
+	.delivered-list p {
+		margin: 0;
+		color: var(--ink-soft);
+	}
+	.delivered-list button {
+		align-self: center;
+		padding: 0.65rem 1rem;
+		border: 1px solid var(--border);
+		border-radius: 999px;
+		background: var(--surface);
+		cursor: pointer;
+		font: inherit;
+	}
+	@media (max-width: 760px) {
+		.delivered-list article {
+			grid-template-columns: 1fr;
+			gap: 0.4rem;
+		}
+	}
+</style>
