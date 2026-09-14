@@ -2,6 +2,12 @@
 	import { untrack } from 'svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import { formatPostDate } from '$lib/blog';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import { webPageSchema } from '$lib/seo/schema';
+	const breadcrumbs = [
+		{ name: 'Home', path: '/' },
+		{ name: 'Insights', path: '/insights' }
+	];
 	let { data } = $props();
 	let activeCategory = $state<(typeof data.categories)[number]['slug']>(
 		untrack(() => data.categories[0].slug)
@@ -15,9 +21,17 @@
 <Seo
 	title="Insights & Perspectives"
 	description="Field-tested perspectives on executive strategy, artificial intelligence, software architecture, ethics, and entrepreneurship."
+	jsonLd={webPageSchema({
+		path: '/insights',
+		name: 'Insights and Perspectives',
+		description:
+			'Field-tested perspectives on executive strategy, artificial intelligence, software architecture, ethics and entrepreneurship.',
+		breadcrumbs
+	})}
 />
 
 <main class="insights-page">
+	<Breadcrumbs items={breadcrumbs} />
 	<header class="insights-hero container">
 		<p class="eyebrow">Editorial archive</p>
 		<h1>Insights & Perspectives</h1>

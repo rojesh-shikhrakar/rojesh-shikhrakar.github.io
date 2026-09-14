@@ -2,6 +2,8 @@
 	import { mailto } from '$lib/site';
 	import Seo from '$lib/components/Seo.svelte';
 	import { marked } from 'marked';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import { webPageSchema } from '$lib/seo/schema';
 
 	let { data } = $props();
 	let activeTestimonial = $state(0);
@@ -15,6 +17,11 @@
 	const courseContentsLabel = $derived(
 		data.program.courseContents?.label ?? 'View Course Contents'
 	);
+	const breadcrumbs = $derived([
+		{ name: 'Home', path: '/' },
+		{ name: 'Programs', path: '/programs' },
+		{ name: data.program.title, path: data.program.href }
+	]);
 
 	function showPreviousTestimonial() {
 		const count = data.program.testimonials?.length ?? 0;
@@ -27,8 +34,19 @@
 	}
 </script>
 
-<Seo title={data.program.title} description={data.program.description} />
+<Seo
+	title={data.program.title}
+	description={data.program.description}
+	image={data.program.image}
+	jsonLd={webPageSchema({
+		path: data.program.href,
+		name: data.program.title,
+		description: data.program.description,
+		breadcrumbs
+	})}
+/>
 <main class="program-detail">
+	<Breadcrumbs items={breadcrumbs} />
 	<header class="program-detail-hero container">
 		<div>
 			<p class="eyebrow">{data.program.tagline ?? 'Strategic Advisory & Training'}</p>

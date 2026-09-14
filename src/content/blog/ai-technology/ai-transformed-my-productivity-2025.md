@@ -107,4 +107,6 @@ Three principles govern how I use AI for productivity:
 
 If you want to implement a similar system, start with one workflow—the one where your most valuable time is most frequently wasted—and apply these principles there. The productivity gains in 2025 are real, but they require intentional design. AI doesn't automatically make you productive; deliberate integration does.
 
+These principles form the practical core of my [AI productivity training for teams in Nepal](/ai-productivity-training-nepal), where participants turn useful experiments into repeatable, reviewable workflows.
+
 _Rojesh Man Shikhrakar teaches AI productivity and enterprise AI deployment at Fusemachines and Kathmandu University. His workshops are available for corporate and institutional bookings._

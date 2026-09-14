@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '../app.css';
 	import { resolve } from '$app/paths';
+	import { page } from '$app/state';
 	import favicon from '$lib/assets/favicon.svg';
 	import { contactEmail, siteName } from '$lib/site';
 
@@ -11,31 +12,42 @@
 	type NavItem = NavLink | { label: string; children: NavLink[] };
 
 	const nav: NavItem[] = [
-		{ label: 'About Me', href: resolve('/about') },
+		{ label: 'About', href: resolve('/about') },
 		{
-			label: 'Programs & Resources',
+			label: 'Training',
 			children: [
-				{ label: 'Courses', href: resolve('/programs') + '#courses' },
-				{ label: 'Seminars', href: resolve('/programs') + '#seminars' },
-				{ label: 'Workshops', href: resolve('/programs') + '#workshops' },
-				{ label: 'Resources', href: resolve('/programs') + '#resources' }
+				{ label: 'Training Overview', href: resolve('/ai-trainer-nepal') },
+				{ label: 'Corporate Teams', href: resolve('/corporate-ai-training-nepal') },
+				{ label: 'Enterprise Capability', href: resolve('/enterprise-ai-training-nepal') },
+				{ label: 'Government & NGOs', href: resolve('/ai-training-government-ngos-nepal') },
+				{ label: 'Workshop Catalogue', href: resolve('/workshops') }
 			]
 		},
 		{
 			label: 'Works',
 			children: [
+				{ label: 'Case Studies', href: resolve('/case-studies') },
 				{ label: 'Past Engagements', href: resolve('/engagements') },
 				{ label: 'Products', href: resolve('/products') },
 				{ label: 'Research', href: resolve('/research') },
 				{ label: 'Books', href: resolve('/books') }
 			]
 		},
-		{ label: 'Insights', href: resolve('/insights') }
+		{ label: 'Writing', href: resolve('/insights') }
 	];
+
+	const isActive = (href: string) =>
+		href.startsWith('mailto:')
+			? false
+			: page.url.pathname === href || (href !== '/' && page.url.pathname.startsWith(`${href}/`));
+	const groupIsActive = (item: Extract<NavItem, { children: NavLink[] }>) =>
+		item.children.some((child) => isActive(child.href));
 
 	const footerLinks = [
 		{ label: 'About', href: resolve('/about') },
 		{ label: 'Past Engagements', href: resolve('/engagements') },
+		{ label: 'AI Training', href: resolve('/ai-trainer-nepal') },
+		{ label: 'Case Studies', href: resolve('/case-studies') },
 		{ label: 'Selected Works', href: resolve('/') + '#impact' },
 		{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/rojeshshikhrakar' }
 	];
@@ -75,15 +87,22 @@
 		<div class="desktop-nav">
 			{#each nav as item (item.label)}
 				{#if 'children' in item}
-					<details class="nav-dropdown">
+					<details class:active={groupIsActive(item)} class="nav-dropdown">
 						<summary>{item.label}<span aria-hidden="true">⌄</span></summary>
 						<div>
-							{#each item.children as child (child.href)}<a href={child.href}>{child.label}</a
+							{#each item.children as child (child.href)}<a
+									class:active={isActive(child.href)}
+									aria-current={isActive(child.href) ? 'page' : undefined}
+									href={child.href}>{child.label}</a
 								>{/each}
 						</div>
 					</details>
 				{:else}
-					<a href={item.href}>{item.label}</a>
+					<a
+						class:active={isActive(item.href)}
+						aria-current={isActive(item.href) ? 'page' : undefined}
+						href={item.href}>{item.label}</a
+					>
 				{/if}
 			{/each}
 			<a class="button button-small" href="mailto:{contactEmail}">Connect Now</a>
@@ -96,12 +115,19 @@
 						<details>
 							<summary>{item.label}</summary>
 							<div>
-								{#each item.children as child (child.href)}<a href={child.href}>{child.label}</a
+								{#each item.children as child (child.href)}<a
+										class:active={isActive(child.href)}
+										aria-current={isActive(child.href) ? 'page' : undefined}
+										href={child.href}>{child.label}</a
 									>{/each}
 							</div>
 						</details>
 					{:else}
-						<a href={item.href}>{item.label}</a>
+						<a
+							class:active={isActive(item.href)}
+							aria-current={isActive(item.href) ? 'page' : undefined}
+							href={item.href}>{item.label}</a
+						>
 					{/if}
 				{/each}
 				<a href="mailto:{contactEmail}">Connect Now</a>

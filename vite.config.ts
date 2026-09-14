@@ -5,7 +5,7 @@ import { playwright } from '@vitest/browser-playwright';
 import adapter from '@sveltejs/adapter-static';
 import { sveltekit } from '@sveltejs/kit/vite';
 
-// To avoid the deprecation warning of mdsvex, temp solution to use <script module> instead of <script context="module">. 
+// To avoid the deprecation warning of mdsvex, temp solution to use <script module> instead of <script context="module">.
 const modernizeMdsveXModuleScript = {
 	markup: ({ content, filename }: { content: string; filename?: string }) => {
 		if (!filename?.endsWith('.md') && !filename?.endsWith('.svx')) return;
@@ -23,7 +23,7 @@ export default defineConfig({
 				runes: ({ filename }) =>
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
-			adapter: adapter({ fallback: '404.html' }),
+			adapter: adapter(),
 			preprocess: [mdsvex({ extensions: ['.svx', '.md'] }), modernizeMdsveXModuleScript],
 			extensions: ['.svelte', '.svx', '.md']
 		})

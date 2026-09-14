@@ -4,12 +4,33 @@
 	import { resolve } from '$app/paths';
 	import portrait from '$lib/assets/rojesh-portrait.webp';
 	import { formatPostDate } from '$lib/blog';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import { articleSchema } from '$lib/seo/schema';
 	let { data } = $props();
+	const breadcrumbs = $derived([
+		{ name: 'Home', path: '/' },
+		{ name: 'Insights', path: '/insights' },
+		{ name: data.post.title, path: data.post.href }
+	]);
 </script>
 
-<Seo title={data.post.title} description={data.post.description} />
+<Seo
+	title={data.post.title}
+	description={data.post.description}
+	image={data.post.image}
+	type="article"
+	jsonLd={articleSchema({
+		path: data.post.href,
+		title: data.post.title,
+		description: data.post.description,
+		datePublished: data.post.date,
+		image: data.post.image,
+		breadcrumbs
+	})}
+/>
 
 <main class="article-page">
+	<Breadcrumbs items={breadcrumbs} />
 	<article class="article-shell container">
 		<header class="article-header">
 			<div class="post-meta">

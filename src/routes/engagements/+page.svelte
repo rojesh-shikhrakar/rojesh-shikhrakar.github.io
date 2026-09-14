@@ -1,9 +1,24 @@
 <script lang="ts">
 	import Seo from '$lib/components/Seo.svelte';
-	import { engagementKinds, pastEngagements, type EngagementKind } from '$lib/engagements';
+	import {
+		engagementKinds,
+		pastEngagements,
+		type EngagementKind,
+		type PastEngagement
+	} from '$lib/engagements';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import EngagementDialog from '$lib/components/EngagementDialog.svelte';
+	import { webPageSchema } from '$lib/seo/schema';
+	import { tick } from 'svelte';
+	const breadcrumbs = [
+		{ name: 'Home', path: '/' },
+		{ name: 'Engagements', path: '/engagements' }
+	];
 
 	type Filter = 'All' | EngagementKind;
 	let activeFilter = $state<Filter>('All');
+	let selectedEngagement = $state<PastEngagement | null>(null);
+	let detailsDialog = $state<HTMLDialogElement>();
 	let visibleEngagements = $derived(
 		activeFilter === 'All'
 			? pastEngagements
@@ -18,14 +33,32 @@
 				: pastEngagements.filter((engagement) => engagement.kind === kind).length
 		])
 	);
+
+	async function showDetails(engagement: PastEngagement) {
+		selectedEngagement = engagement;
+		await tick();
+		detailsDialog?.showModal();
+	}
+
+	function formatEngagementDate(date: string, year: number) {
+		return date.includes(String(year)) ? date : `${date}, ${year}`;
+	}
 </script>
 
 <Seo
 	title="Past Engagements — Workshops, Talks & Media"
 	description="An archive of workshops, talks, panel discussions, podcasts, published articles and media appearances by Rojesh Man Shikhrakar."
+	jsonLd={webPageSchema({
+		path: '/engagements',
+		name: 'Past Engagements',
+		description:
+			'An archive of workshops, talks, panels, podcasts, articles and media appearances by Rojesh Man Shikhrakar.',
+		breadcrumbs
+	})}
 />
 
 <main class="engagements-page">
+	<Breadcrumbs items={breadcrumbs} />
 	<header class="engagements-hero container">
 		<div>
 			<p class="eyebrow">Selected archive</p>
@@ -51,7 +84,7 @@
 
 		<div class="filter-wrap">
 			<div class="filters container" aria-label="Filter past engagements">
-				{#each engagementKinds as kind}
+				{#each engagementKinds as kind (kind)}
 					<button
 						type="button"
 						class:active={activeFilter === kind}
@@ -74,34 +107,36 @@
 					<div class="entry-main">
 						<div class="entry-meta">
 							<span>{engagement.kind}</span>
-							{#if engagement.date}<time>{engagement.date}</time>{/if}
+							{#if engagement.date}<time
+									>{formatEngagementDate(engagement.date, engagement.year)}</time
+								>{/if}
 						</div>
-						<h3>
-							{#if engagement.href}
-								<a href={engagement.href} target="_blank" rel="noreferrer">{engagement.title}</a>
-							{:else}
-								{engagement.title}
-							{/if}
-						</h3>
+						<h3>{engagement.title}</h3>
 						{#if engagement.org}<p class="entry-org">{engagement.org}</p>{/if}
 						{#if engagement.note}<p class="entry-note">{engagement.note}</p>{/if}
 					</div>
-					{#if engagement.href}
-						<a
-							class="entry-link"
-							href={engagement.href}
-							target="_blank"
-							rel="noreferrer"
-							aria-label={`Open ${engagement.title} in a new tab`}
-						>
-							<span>View</span><span aria-hidden="true">↗</span>
-						</a>
-					{/if}
+					<div class="entry-actions">
+						<button type="button" class="entry-link" onclick={() => showDetails(engagement)}>
+							<span>View details</span><span aria-hidden="true">→</span>
+						</button>
+						{#if engagement.href || engagement.link}
+							<a
+								class="entry-source"
+								href={engagement.href ?? engagement.link}
+								target="_blank"
+								rel="noreferrer"
+								aria-label={`Open external source for ${engagement.title} in a new tab`}
+								><span>Source</span><span aria-hidden="true">↗</span></a
+							>
+						{/if}
+					</div>
 				</article>
 			{/each}
 		</div>
 	</section>
 </main>
+
+<EngagementDialog engagement={selectedEngagement} bind:dialog={detailsDialog} />
 
 <style>
 	.engagements-hero {
@@ -173,7 +208,7 @@
 		border: 1px solid transparent;
 		border-radius: 999px;
 		background: transparent;
-		color: #bdc5c8;
+		color: #fff;
 		font: 600 0.85rem var(--sans);
 		cursor: pointer;
 	}
@@ -183,7 +218,7 @@
 	.filters button.active {
 		border-color: rgba(177, 239, 224, 0.42);
 		background: rgba(177, 239, 224, 0.1);
-		color: var(--teal-light);
+		color: #fff;
 	}
 	.filters button span {
 		margin-left: 0.35rem;
@@ -218,7 +253,7 @@
 		flex-wrap: wrap;
 		gap: 0.65rem 1rem;
 		margin-bottom: 0.75rem;
-		color: #aeb8bc;
+		color: #fff;
 		font-size: 0.72rem;
 		font-weight: 700;
 		letter-spacing: 0.11em;
@@ -233,35 +268,63 @@
 		color: #fffdf9;
 		font-size: clamp(1.5rem, 3vw, 2.15rem);
 	}
-	.entry-main h3 a:hover {
-		color: var(--teal-light);
-	}
 	.entry-org {
 		margin: 0.7rem 0 0;
-		color: #d9dedf;
+		color: #fff;
 	}
 	.entry-note {
 		margin: 0.35rem 0 0;
-		color: #949fa3;
+		color: #fff;
 		font-size: 0.9rem;
 	}
 	.entry-link {
 		display: inline-flex;
-		min-width: 4.5rem;
+		min-width: 7.5rem;
 		min-height: 2.75rem;
 		align-items: center;
-		justify-content: flex-end;
+		justify-content: center;
 		gap: 0.5rem;
-		color: var(--teal-light);
+		padding: 0.55rem 0.9rem;
+		border: 1px solid rgba(177, 239, 224, 0.35);
+		border-radius: 999px;
+		background: rgba(177, 239, 224, 0.08);
+		color: #fff;
+		cursor: pointer;
+		font: inherit;
 		font-size: 0.85rem;
 		font-weight: 700;
+	}
+	.entry-actions {
+		display: flex;
+		flex-direction: column;
+		gap: 0.65rem;
+		align-items: stretch;
+	}
+	.entry-source {
+		display: inline-flex;
+		min-height: 2.75rem;
+		align-items: center;
+		justify-content: center;
+		gap: 0.45rem;
+		color: #fff;
+		font-size: 0.78rem;
+		font-weight: 700;
+	}
+	.entry-link:focus-visible,
+	.entry-source:focus-visible {
+		outline: 3px solid var(--bronze-light);
+		outline-offset: 3px;
 	}
 	.entry-link span:last-child {
 		font-size: 1.2rem;
 		transition: transform 160ms ease;
 	}
+	.entry-link:hover {
+		border-color: var(--teal-light);
+		background: rgba(177, 239, 224, 0.14);
+	}
 	.entry-link:hover span:last-child {
-		transform: translate(2px, -2px);
+		transform: translateX(2px);
 	}
 	@media (max-width: 720px) {
 		.engagements-hero {
@@ -290,8 +353,8 @@
 		/* .entry-year {
 			font-size: 1.05rem;
 		} */
-		.entry-link span:first-child {
-			display: none;
+		.entry-actions {
+			align-items: flex-start;
 		}
 	}
 	@media (prefers-reduced-motion: reduce) {

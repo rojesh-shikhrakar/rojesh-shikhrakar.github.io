@@ -30,7 +30,7 @@ modules:
       - 'Use extended thinking deliberately: when step-by-step reasoning helps and when it only adds latency'
       - 'Work with the context window: what Claude can see, what it has forgotten, and why long chats degrade'
       - 'Recognise knowledge cutoffs, non-determinism, refusals, and the difference between a limit and a bad prompt'
-      - 'Understand Constitutional AI and Claude''s character: helpfulness, honesty, and harm avoidance in practice'
+      - "Understand Constitutional AI and Claude's character: helpfulness, honesty, and harm avoidance in practice"
       - 'Exercise: Probe Claude on a real work task and document its strengths, failure modes, and needed oversight'
 
   - title: 'Module 2 — Prompting Claude Well'
@@ -66,7 +66,7 @@ modules:
   - title: 'Module 5 — Files, Documents, and Data Analysis'
     body:
       - 'Work with PDFs, spreadsheets, slides, images, and code as inputs to analysis'
-      - 'Use Claude''s analysis and code-execution abilities for calculation, reconciliation, and charting'
+      - "Use Claude's analysis and code-execution abilities for calculation, reconciliation, and charting"
       - 'Extract structure from unstructured material: themes, entities, obligations, anomalies, and open questions'
       - 'Ground answers in supplied sources and require citations back to the document'
       - 'Recognise where document analysis is unreliable: scans, dense tables, ambiguity, and long-range consistency'
@@ -126,7 +126,7 @@ modules:
 
   - title: 'Module 11 — Safety, Privacy, and Governance'
     body:
-      - 'Understand Anthropic''s usage policies, safety levels, and what Claude will and will not do'
+      - "Understand Anthropic's usage policies, safety levels, and what Claude will and will not do"
       - 'Protect confidential, personal, customer, employee, financial, and intellectual-property data'
       - 'Know how enterprise deployment differs from consumer use on retention, training, and admin control'
       - 'Evaluate output for accuracy, bias, exclusion, accessibility, and copyright before use'
@@ -184,41 +184,41 @@ The workshop runs from a 1-hour executive briefing to a 16-hour deep dive. Modul
 
 ### Day 1 — Fundamentals to Repeatable Work
 
-| Time          | Session                          | Practical output                     |
-| ------------- | -------------------------------- | ------------------------------------ |
-| 9:00 – 9:30   | Goals, baseline, and task audit  | Personal use-case shortlist          |
-| 9:30 – 10:30  | Understanding Claude             | Capability and limitation map        |
-| 10:45 – 12:15 | Prompting lab                    | Tested prompt with acceptance test   |
-| 13:00 – 14:00 | Projects and persistent context  | Configured project workspace         |
-| 14:00 – 15:00 | Artifacts and deliverables       | Shareable artifact with review notes |
-| 15:15 – 16:30 | Files, documents, and analysis   | Evidence-backed findings memo        |
-| 16:30 – 17:00 | Reflection and peer review       | Day 2 workflow candidate             |
+| Time          | Session                         | Practical output                     |
+| ------------- | ------------------------------- | ------------------------------------ |
+| 9:00 – 9:30   | Goals, baseline, and task audit | Personal use-case shortlist          |
+| 9:30 – 10:30  | Understanding Claude            | Capability and limitation map        |
+| 10:45 – 12:15 | Prompting lab                   | Tested prompt with acceptance test   |
+| 13:00 – 14:00 | Projects and persistent context | Configured project workspace         |
+| 14:00 – 15:00 | Artifacts and deliverables      | Shareable artifact with review notes |
+| 15:15 – 16:30 | Files, documents, and analysis  | Evidence-backed findings memo        |
+| 16:30 – 17:00 | Reflection and peer review      | Day 2 workflow candidate             |
 
 ### Day 2 — Connected, Agentic, and Governed
 
-| Time          | Session                        | Practical output                     |
-| ------------- | ------------------------------ | ------------------------------------ |
-| 9:00 – 9:30   | Review and retrieval practice  | Improved prompt patterns             |
-| 9:30 – 10:45  | Skills authoring lab           | Peer-tested reusable skill           |
-| 11:00 – 12:15 | Connectors, MCP, permissions   | Connected workflow and access map    |
-| 13:00 – 14:15 | Agents and bounded autonomy    | Agent instruction and control plan   |
-| 14:15 – 15:15 | Claude Code / API track        | Reviewed change or evaluated tool    |
-| 15:30 – 16:15 | Safety, privacy, governance     | Risk assessment and mitigation plan  |
-| 16:15 – 17:00 | Capstone and next steps        | 30-day adoption plan                 |
+| Time          | Session                       | Practical output                    |
+| ------------- | ----------------------------- | ----------------------------------- |
+| 9:00 – 9:30   | Review and retrieval practice | Improved prompt patterns            |
+| 9:30 – 10:45  | Skills authoring lab          | Peer-tested reusable skill          |
+| 11:00 – 12:15 | Connectors, MCP, permissions  | Connected workflow and access map   |
+| 13:00 – 14:15 | Agents and bounded autonomy   | Agent instruction and control plan  |
+| 14:15 – 15:15 | Claude Code / API track       | Reviewed change or evaluated tool   |
+| 15:30 – 16:15 | Safety, privacy, governance   | Risk assessment and mitigation plan |
+| 16:15 – 17:00 | Capstone and next steps       | 30-day adoption plan                |
 
 ## Choosing the Right Claude Surface
 
-| Work pattern                                    | Use this                          | Example                                         |
-| ----------------------------------------------- | --------------------------------- | ----------------------------------------------- |
-| One-off, low-risk task                          | Prompt with human review          | Rewrite a paragraph for a specific audience     |
-| Repeated task, stable inputs and standards      | Reusable skill                    | Weekly status report in house format            |
-| Ongoing work needing the same background        | Project with curated context      | Bid writing against a standing document set     |
-| Output that must be shared or used as a tool    | Artifact                          | Board summary, dashboard, decision calculator   |
-| Needs authorised live data from real systems     | Connector or MCP server, read-only | Summarise this week's approved project updates |
-| Variable, multi-step, reversible task            | Bounded agent with checkpoints    | Assemble a research brief from permitted sources |
-| Repository, data, or infrastructure change       | Claude Code with tests            | Implement and verify a small feature            |
-| Product feature for many users                   | Claude API with evaluation        | In-app drafting or classification feature       |
-| High-impact or irreversible decision             | Human-led, Claude advisory only   | Hiring, legal, medical, financial decisions     |
+| Work pattern                                 | Use this                           | Example                                          |
+| -------------------------------------------- | ---------------------------------- | ------------------------------------------------ |
+| One-off, low-risk task                       | Prompt with human review           | Rewrite a paragraph for a specific audience      |
+| Repeated task, stable inputs and standards   | Reusable skill                     | Weekly status report in house format             |
+| Ongoing work needing the same background     | Project with curated context       | Bid writing against a standing document set      |
+| Output that must be shared or used as a tool | Artifact                           | Board summary, dashboard, decision calculator    |
+| Needs authorised live data from real systems | Connector or MCP server, read-only | Summarise this week's approved project updates   |
+| Variable, multi-step, reversible task        | Bounded agent with checkpoints     | Assemble a research brief from permitted sources |
+| Repository, data, or infrastructure change   | Claude Code with tests             | Implement and verify a small feature             |
+| Product feature for many users               | Claude API with evaluation         | In-app drafting or classification feature        |
+| High-impact or irreversible decision         | Human-led, Claude advisory only    | Hiring, legal, medical, financial decisions      |
 
 ## The Claude Verification Check
 

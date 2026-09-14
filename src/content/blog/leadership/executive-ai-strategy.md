@@ -41,4 +41,6 @@ The goal is not to predict the perfect sequence of AI investments. It is to buil
 
 The organizations that move beyond the hype cycle are rarely those with the most tools. They are the ones that turn each implementation into stronger judgment, clearer standards, and greater internal capability.
 
+This is also the foundation of my [enterprise AI training and capability development in Nepal](/enterprise-ai-training-nepal): strategy, governance, workflow design and learning must reinforce one another.
+
 > Responsible AI is not a compliance layer added after innovation. It is the operating discipline that makes sustained innovation possible.

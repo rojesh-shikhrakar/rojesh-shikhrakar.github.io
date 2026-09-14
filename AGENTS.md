@@ -29,3 +29,16 @@ You MUST use this tool whenever writing Svelte code before sending it to the use
 
 Generates a Svelte Playground link with the provided code.
 After completing the code, ask the user if they want a playground link. Only call this tool after user confirmation and NEVER if code was written to files in their project.
+
+## SEO implementation principles
+
+1. Never keyword-stuff copy or hide text for search engines.
+2. Never invent testimonials, clients, metrics, awards, outcomes, or affiliations.
+3. Never create location doorway pages or near-duplicate search pages.
+4. Every SEO page must target a distinct search intent.
+5. Every factual claim must come from repository data or approved content.
+6. Preserve one canonical Person entity and reuse centrally stored facts.
+7. Every new indexable page requires a unique title, description, canonical, H1, OpenGraph metadata, breadcrumb, and sitemap entry.
+8. Prefer SSR or static HTML for SEO-critical content.
+9. Validate JSON-LD and keep it consistent with visible page content.
+10. Preserve accessible semantics and useful information architecture.

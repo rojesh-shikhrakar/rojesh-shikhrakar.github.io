@@ -1,13 +1,18 @@
 <script lang="ts">
 	import { mailto } from '$lib/site';
 	import Seo from '$lib/components/Seo.svelte';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import { webPageSchema } from '$lib/seo/schema';
+	const breadcrumbs = [
+		{ name: 'Home', path: '/' },
+		{ name: 'Books', path: '/books' }
+	];
 	const books = [
 		{
 			title: 'The Human Advantage: What remains valuable when intelligence becomes abundant',
 			description:
 				'A monograph exploring the future of work, education, and human flourishing in an era of abundant machine intelligence.',
-			image:
-				'https://res.cloudinary.com/w6ej7kot/image/upload/The_Human_Advantage_Book.png',
+			image: 'https://res.cloudinary.com/w6ej7kot/image/upload/The_Human_Advantage_Book.png',
 			link: 'https://ha.rojeshshikhrakar.com.np/',
 			status: 'Forthcoming'
 		},
@@ -25,8 +30,16 @@
 <Seo
 	title="Books & Curriculum"
 	description="Authored books, technical guides, and AI curriculum designed for academic and professional learning."
+	jsonLd={webPageSchema({
+		path: '/books',
+		name: 'Books and Curriculum',
+		description:
+			'Authored books, technical guides and AI curriculum for academic and professional learning.',
+		breadcrumbs
+	})}
 />
 <main class="work-page">
+	<Breadcrumbs items={breadcrumbs} />
 	<header class="work-hero container">
 		<p class="eyebrow">Long-form learning</p>
 		<h1>Books & Curriculum</h1>

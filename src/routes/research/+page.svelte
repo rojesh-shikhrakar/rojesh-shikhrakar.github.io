@@ -1,31 +1,30 @@
 <script lang="ts">
 	import { mailto } from '$lib/site';
 	import Seo from '$lib/components/Seo.svelte';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import { webPageSchema } from '$lib/seo/schema';
+	const breadcrumbs = [
+		{ name: 'Home', path: '/' },
+		{ name: 'Research', path: '/research' }
+	];
 	type Publication = [year: string, title: string, citation: string, tags: string[], url: string];
 
 	const interests = [
 		{
 			title: 'AI in Pedagogy & Education',
-			body: 'Investigating the role of AI in personalized learning, curriculum design, and the development of intelligent tutoring systems. Have build AI enabled education platform with multiple types of graders with feedback for code, subjective, objective, image and video graders. Have AI-enabled proctoring platform that flags suspicious activities during online exams. Content Authoring Tool to generate contents, questions and answers for multiple choice, subjective, objective questions, supporting mathematics and coding with variations of context, phrasing and scenarios.',
-			image:
-				'https://lh3.googleusercontent.com/aida-public/AB6AXuBETcQj37VWI7hucuu460HD-ud6VbyOH8svtZu0gZEtk9aW2kR23BiBHhyx9ArNsN-v6AuGbpavG2kVVkhv7LgGe7kv5XOY2W1CbXQ9AS9S_o36mULZ8q2QwXT8a9yo37OhSWn0ukhsoN6ZPFGS6msqKoFKAg8_8E61hR2aviIsdpB4M71FJbmxmRdd4rpzw2x42aAUib7hTgQSQyVzij-KtH0J7cbHkahzM-XpFfwvD3FKtzrYhumE'
+			body: 'I study how AI can support teaching, feedback, assessment and curriculum design without weakening academic judgment. My applied work includes automated feedback for several assessment formats, online-exam monitoring and tools that help educators draft and vary learning materials.'
 		},
 		{
 			title: 'Scientific Machine Learning',
-			body: 'Developing physics-informed neural networks and data-driven discovery of governing equations for complex systems.',
-			image:
-				'https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs10462-025-11322-7/MediaObjects/10462_2025_11322_Fig2_HTML.png'
+			body: 'Developing physics-informed neural networks and data-driven methods for discovering the governing equations of complex systems.'
 		},
 		{
 			title: 'Agentic AI',
-			body: 'Exploring the design of autonomous agents capable of reasoning, planning, and acting in complex environments.',
-			image: 'https://www.aprimo.com/wp-content/uploads/2025/09/image5-3-1024x576.jpg'
+			body: 'Exploring how autonomous agents reason, plan and act—and where people need visibility, review and control.'
 		},
 		{
 			title: 'Computer Vision & Pattern Recognition',
-			body: 'Investigating hierarchical feature extraction in multi-modal environments and the robustness of spatial understanding in synthetic datasets.',
-			image:
-				'https://lh3.googleusercontent.com/aida-public/AB6AXuBETcQj37VWI7hucuu460HD-ud6VbyOH8svtZu0gZEtk9aW2kR23BiBHhyx9ArNsN-v6AuGbpavG2kVVkhv7LgGe7kv5XOY2W1CbXQ9AS9S_o36mULZ8q2QwXT8a9yo37OhSWn0ukhsoN6ZPFGS6msqKoFKAg8_8E61hR2aviIsdpB4M71FJbmxmRdd4rpzw2x42aAUib7hTgQSQyVzij-KtH0J7cbHkahzM-XpFfwvD3FKtzrYhumE'
+			body: 'Investigating feature extraction in multimodal systems and the reliability of spatial understanding in synthetic datasets.'
 		},
 		{
 			title: 'Natural Language Processing',
@@ -57,8 +56,16 @@
 <Seo
 	title="Research & Publications"
 	description="Research in Scientific Machine Learning, Agentic AI, computer vision, natural language processing, and reliable alignment-first AI."
+	jsonLd={webPageSchema({
+		path: '/research',
+		name: 'Research and Publications',
+		description:
+			'Research in scientific machine learning, agentic AI, computer vision, natural language processing and reliable AI.',
+		breadcrumbs
+	})}
 />
 <main class="work-page">
+	<Breadcrumbs items={breadcrumbs} />
 	<header class="work-hero container">
 		<p class="eyebrow">Academic inquiry & applied innovation</p>
 		<h1>Research & Publications</h1>
@@ -81,12 +88,6 @@
 		<div class="interest-grid">
 			{#each interests as interest, index (interest.title)}
 				<article class:dark={index % 2 === 1} class="interest-card">
-					{#if interest.image}<img
-							src={interest.image}
-							alt="Abstract neural network visualization"
-							width="600"
-							height="380"
-						/>{/if}
 					<div>
 						<span>0{index + 1}</span>
 						<h3>{interest.title}</h3>
@@ -127,8 +128,8 @@
 		<div class="work-cta">
 			<h2>Collaboration Inquiries</h2>
 			<p>
-				Interested in academic partnership or technical consulting for AI reliability? My door is
-				open for substantive research dialogues.
+				If you are working on AI reliability, scientific machine learning or AI in education, tell
+				me what you are investigating and where a collaborator could help.
 			</p>
 			<a class="button" href={mailto('Research collaboration')}>Start a conversation</a>
 		</div>

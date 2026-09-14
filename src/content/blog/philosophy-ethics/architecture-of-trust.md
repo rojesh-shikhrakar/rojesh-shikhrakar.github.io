@@ -36,4 +36,6 @@ The transition from AI as a tool to AI as an agent requires redesigned feedback 
 
 Trust is created when people can understand a system’s role, challenge its reasoning, and recover when it is wrong. Those qualities must be designed into the architecture—not added as documentation afterward.
 
+For organizations applying these ideas to policy and everyday work, see my approach to [responsible AI governance training in Nepal](/ai-governance-training-nepal).
+
 > The goal of responsible autonomy is not to remove people from decisions. It is to give people better leverage without giving up meaningful control.

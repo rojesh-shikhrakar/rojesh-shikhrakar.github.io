@@ -1,0 +1,23 @@
+:root {
+	--paper: #f7f4ee;
+	--surface: #fffdf9;
+	--border: #d2c8b9;
+	--ink: #121c26;
+	--ink-soft: #404946;
+	--ink-deep: #101820;
+	--teal: #00453b;
+	--teal-hover: #0b5f51;
+	--teal-light: #b1efe0;
+	--bronze: #77591e;
+	--bronze-light: #fed48c;
+	--success: #2f6f5e;
+	--serif: 'Newsreader', Georgia, serif;
+	--sans: 'Manrope', system-ui, sans-serif;
+	--container: 70rem;
+	--reading: 44rem;
+	--space-section: clamp(4.5rem, 9vw, 7.5rem);
+	--radius-card: 1rem;
+	--layer-header: 50;
+	--layer-skip-link: 100;
+	--shadow: 0 1rem 3rem rgba(16, 24, 32, 0.07), 0 0.2rem 0.8rem rgba(16, 24, 32, 0.05);
+}

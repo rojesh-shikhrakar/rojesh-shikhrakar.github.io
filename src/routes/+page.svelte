@@ -1,26 +1,28 @@
 <script lang="ts">
-	import { mailto, siteUrl } from '$lib/site';
+	import { mailto } from '$lib/site';
+	import { personSchema, websiteSchema } from '$lib/seo/schema';
 	import Seo from '$lib/components/Seo.svelte';
 	import portrait from '$lib/assets/rojesh-portrait.webp';
 	import fellowship from '$lib/assets/photos/aifellowship-np-2026.webp';
+	import { professionalRoles, professionalStats } from '$lib/professional';
 
 	const programs = [
 		{
-			icon: '↗',
+			icon: 'strategy',
 			title: 'Executive Strategy',
-			body: 'Framing the AI opportunity for decision-makers. Focus on risk mitigation, investment ROI, and building a roadmap for responsible AI adoption across the enterprise.',
+			body: 'I help decision-makers identify useful AI opportunities, understand the risks, and decide what their teams should do next.',
 			items: ['Leadership Workshops', 'Policy Frameworks', 'Cultural & Strategic Alignment']
 		},
 		{
-			icon: '✦',
+			icon: 'workflow',
 			title: 'Productivity Labs',
-			body: 'Hands-on implementation of LLMs and generative tools. We focus on specific job roles and workflows, ensuring that AI becomes a co-pilot, not a distraction.',
+			body: 'Participants work on tasks they already handle—research, analysis, writing, planning, and communication—and build repeatable ways to use AI.',
 			items: ['Workflow Automation', 'Prompt Engineering', 'Tool Stack Optimization']
 		},
 		{
-			icon: '▤',
+			icon: 'education',
 			title: 'Academic Programs',
-			body: 'Integrating AI into higher education curricula. Designing pedagogical approaches that maintain academic integrity while preparing students for an AI-native workforce.',
+			body: 'I work with faculty and curriculum teams to teach AI without losing academic integrity, sound assessment, or the fundamentals students still need.',
 			items: ['Curriculum Design', 'Faculty Upskilling', 'Student Readiness']
 		}
 	];
@@ -31,42 +33,14 @@
 		['Build', 'Develop internal AI guidelines and standard operating procedures.'],
 		['Transfer', 'Establish internal champions who sustain and grow AI capability.']
 	];
-	const engagements = [
-		['Fusemachines Inc.', 'Director of AI Education & Talent Development'],
-		['Kathmandu University', 'Subject Committee Member, Visiting Faculty'],
-		['Industry Integrated Degree (IID by NASIT-NOU)', 'Subject Committee Member'],
-		['Australia Awards', 'Capability Building Programs']
-	];
+	const engineersTrained = professionalStats.find(
+		(metric) => metric.label === 'AI engineers trained'
+	);
+	const countriesReached = professionalStats.find((metric) => metric.label === 'Countries reached');
 
-	const personSchema = {
+	const homeSchema = {
 		'@context': 'https://schema.org',
-		'@type': 'Person',
-		name: 'Rojesh Man Shikhrakar',
-		url: siteUrl,
-		image: `${siteUrl}${portrait}`,
-		jobTitle: 'AI Trainer, Educator & Consultant',
-		description:
-			'AI trainer and consultant based in Kathmandu, Nepal, delivering corporate AI training, workshops, and machine learning education.',
-		address: {
-			'@type': 'PostalAddress',
-			addressLocality: 'Kathmandu',
-			addressCountry: 'NP'
-		},
-		worksFor: { '@type': 'Organization', name: 'Fusemachines' },
-		knowsAbout: [
-			'Artificial Intelligence',
-			'Machine Learning',
-			'Generative AI',
-			'Large Language Models',
-			'AI Training',
-			'AI Strategy',
-			'Prompt Engineering',
-			'Data Science'
-		],
-		sameAs: [
-			'https://www.linkedin.com/in/rojesh-shikhrakar/',
-			'https://github.com/rojesh-shikhrakar'
-		]
+		'@graph': [websiteSchema(), personSchema(portrait)]
 	};
 </script>
 
@@ -75,43 +49,40 @@
 	description="Rojesh Man Shikhrakar is an AI trainer, engineer and consultant based in Kathmandu, Nepal, delivering corporate AI training, workshops and machine learning programs across Nepal and beyond."
 	image={portrait}
 	type="profile"
-	jsonLd={personSchema}
+	jsonLd={homeSchema}
 />
 
 <main id="main-content">
 	<section class="hero container">
 		<div class="hero-copy">
-			<p class="eyebrow">AI Trainer, Engineer & Consultant &middot; Kathmandu, Nepal</p>
-			<h1>Empowering Humans, Accelerated by AI</h1>
+			<p class="eyebrow">AI educator & enterprise practitioner &middot; Kathmandu</p>
+			<h1>I turn AI complexity into organizational capability.</h1>
 			<p class="lead">
-				I have spent a decade deploying AI solutions to production. Bridging the gap between
-				frontier technology and human talent. I design and deliver high-impact AI training programs
-				and systems from school level to enterprise, from basic AI literacy to AI research and
-				engineering.
+				I help people move beyond impressive AI demos and use the technology in work that actually
+				matters. My <a href="/ai-trainer-nepal">AI training for organizations in Nepal</a>
+				connects practical workflows with careful review, governance and technical understanding.
 			</p>
+			<div class="button-row">
+				<a class="button" href={mailto('AI training program')}>Discuss a Training Program</a>
+				<a class="button button-secondary" href="/ai-trainer-nepal">Explore AI Training</a>
+			</div>
 		</div>
 		<div class="portrait-wrap">
 			<img class="portrait" src={portrait} alt="Rojesh Man Shikhrakar" width="336" height="513" />
 			<!-- <div class="availability"><span></span></div> -->
-		</div>
-		<div class="button-row">
-			<a class="button" href={mailto('AI training program')}>Discuss a Training Program</a><a
-				class="button button-secondary"
-				href="/programs">Explore Expertise</a
-			>
 		</div>
 	</section>
 
 	<section class="proof" aria-label="Professional highlights">
 		<div class="proof-grid container">
 			<div>
-				<strong>Director of AI Education & Talent Development</strong><span>at Fusemachines</span>
+				<strong>{professionalRoles[0].title}</strong><span
+					>at {professionalRoles[0].organization}</span
+				>
 			</div>
-			<div>
-				<strong>Visiting Faculty</strong><span>at Kathmandu University, NIST, Islignton</span>
-			</div>
-			<div><strong>1,500+</strong><span>AI engineers trained</span></div>
-			<div><strong>15+</strong><span>countries reached</span></div>
+			<div><strong>Visiting Faculty</strong><span>at Kathmandu University</span></div>
+			<div><strong>{engineersTrained?.value}</strong><span>{engineersTrained?.label}</span></div>
+			<div><strong>{countriesReached?.value}</strong><span>{countriesReached?.label}</span></div>
 		</div>
 	</section>
 
@@ -120,9 +91,9 @@
 			<h2>True AI capability comes from a shift in human problem-solving</h2>
 			<div class="short-rule"></div>
 			<p class="lead">
-				AI capability is not built through tool demonstrations. It comes from new mental models,
-				workflow redesign, and continuous learning. Tools only amplify your current habits; your
-				daily thinking must change before your results do.
+				A tool demonstration can create excitement, but it rarely changes how a team works. I begin
+				with the decisions, documents and conversations people already handle, then help them build
+				a repeatable way to use AI without handing over their judgment.
 			</p>
 		</div>
 	</section>
@@ -135,11 +106,25 @@
 			</div>
 			<div class="program-grid">
 				{#each programs as program (program.title)}<article class="program-card">
-						<div class="card-icon" aria-hidden="true">{program.icon}</div>
+						<div class="card-icon" aria-hidden="true">
+							{#if program.icon === 'strategy'}
+								<svg viewBox="0 0 24 24"><path d="M5 19V9m7 10V5m7 14v-7M3 19h18" /></svg>
+							{:else if program.icon === 'workflow'}
+								<svg viewBox="0 0 24 24"
+									><path d="M6 5h12M6 12h12M6 19h12M3 5h.01M3 12h.01M3 19h.01" /></svg
+								>
+							{:else}
+								<svg viewBox="0 0 24 24"
+									><path d="M4 6.5 12 3l8 3.5-8-3.5Zm2 3V16c3 2.5 9 2.5 12 0V9.5" /></svg
+								>
+							{/if}
+						</div>
 						<h3>{program.title}</h3>
 						<p>{program.body}</p>
 						<ul>
-							{#each program.items as item (item)}<li><span>✓</span>{item}</li>{/each}
+							{#each program.items as item (item)}<li>
+									<svg aria-hidden="true" viewBox="0 0 16 16"><path d="m3 8 3 3 7-7" /></svg>{item}
+								</li>{/each}
 						</ul>
 					</article>{/each}
 			</div>
@@ -152,15 +137,16 @@
 				<p class="eyebrow">Institutional impact</p>
 				<h2>Fusemachines AI Fellowship</h2>
 				<p>
-					Leading the educational strategy for Fusemachines' flagship AI fellowship programs. We
-					have scaled technical education to thousands of learners across 15+ countries, creating a
-					new pipeline of AI talent for the global market. In addition to this, I have designed and
-					delivered foundation, microdegree in AI, microdegree specialization courses for AI
-					engineers and researchers, and AI literacy programs for non-technical professionals. For
-					More Info: <a href="https://fuse.ai/" target="_blank" rel="noopener noreferrer">fuse.ai</a
-					>
+					At Fusemachines, I lead education strategy for AI fellowship programs delivered across
+					{countriesReached?.value} countries. My work has included foundation courses, AI microdegrees,
+					specializations for engineers and researchers, and AI literacy programs for non-technical professionals.
+					<a href="https://fuse.ai/" target="_blank" rel="noopener noreferrer"
+						>Learn about the fellowship</a
+					>.
 				</p>
-				<div class="tags"><span>Strategic lead</span><span>15+ countries</span></div>
+				<div class="tags">
+					<span>Strategic lead</span><span>{countriesReached?.value} countries</span>
+				</div>
 			</div>
 			<img
 				src={fellowship}
@@ -171,21 +157,17 @@
 			/>
 		</article>
 		<article class="impact-row reverse">
-			<img
-				src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsJJRpjoG01c-3PO4iNYND0-DdWfOOXAsVHT_5zVld2gAB0rpC9PSHVT7p8bzCBUYw12muxLcK8uQDFwyFOWtG6yp2ikv_5MC-SxmjBsh8cMJq71JoLx-DQiQHviGCtCWqC6mdQ_Aog-E6qfWSI9yvHHaJ9Eh-VExUUsgCHYx3ZkucIse32-Cidq2ED9rrVMiGhJjAbF5T6tn8A9p_QTEPoWFBOd5E23fcdDa6gTCFfs-SRo9qrPUe"
-				alt="Academic notebook and lectern in a university hall"
-				width="560"
-				height="315"
-				loading="lazy"
-			/>
+			<div class="impact-marker" aria-hidden="true">
+				<span>KU</span><small>Teaching and curriculum</small>
+			</div>
 			<div>
 				<p class="eyebrow">Academic leadership</p>
 				<h2>Curriculum Committee and Visiting Faculty</h2>
 				<p>
-					Bridging academia and industry. As a subject committee member at Kathmandu University (KU)
-					and Industry Integrated Degree (IID by NOU-NASIT), I provide insights to curriculum that
-					translates engineering AI practices and research into actionable knowledge, preparing the
-					next generation for the ethical and practical challenges of the AI era.
+					As a subject committee member at Kathmandu University and the Industry Integrated Degree,
+					I bring current engineering and research questions into curriculum discussions. In the
+					classroom, that means helping students understand both how AI systems work and where their
+					limitations matter.
 				</p>
 				<a class="text-link" href="#engagements">View selected engagements <span>→</span></a>
 			</div>
@@ -213,8 +195,8 @@
 			<span>Partners & collaborators</span>
 		</div>
 		<div class="engagement-list">
-			{#each engagements as engagement (engagement[0])}<div>
-					<strong>{engagement[0]}</strong><span>{engagement[1]}</span>
+			{#each professionalRoles as engagement (engagement.organization)}<div>
+					<strong>{engagement.organization}</strong><span>{engagement.title}</span>
 				</div>{/each}
 		</div>
 	</section>

@@ -11,12 +11,86 @@ export type PastEngagement = {
 	href?: string;
 	link?: string;
 	image?: string;
+	industry?: string;
+	audience?: string;
+	participants?: string;
+	duration?: string;
+	challenge?: string;
+	objectives?: string[];
+	curriculum?: string[];
+	methodology?: string[];
+	outcomes?: string[];
+	testimonial?: { quote: string; name: string; role?: string; approved: boolean };
+	externalReferences?: Array<{ label: string; url: string }>;
 };
 
 export const pastEngagements: PastEngagement[] = [
 	{
-		title:
-			'Promoting academia-industry collaboration for higher education innovation in South Asia - 2026 Leadership Policy Dialogue in South Asia',
+		title: 'AI for Influencing: Counter-Narratives to End Child Marriage in Asia',
+		kind: 'Workshop',
+		org: 'Plan International — Youth Action Lab',
+		date: '2–3 September',
+		year: 2026,
+		location: 'Crown Imperial, Kathmandu',
+		href: 'https://plan-international.org/nepal',
+		image: 'https://res.cloudinary.com/w6ej7kot/image/upload/Plan_International.jpg'
+	},
+	{
+		title: 'Action for Nepal - AI for Work Productivity',
+		kind: 'Workshop',
+		org: 'Action for Nepal',
+		date: 'August',
+		year: 2026,
+		location: 'Kathmandu, Nepal',
+		href: 'https://actionfornepal.org/'
+	},
+	{
+		title: 'U.S.–Nepal Commercial Diplomacy Series, CEO Dialogue #3, Supporting Nepali Entrepreneurs through AI Readiness',
+		kind: 'Workshop',
+		org: 'Convened by Aadyanta Advisory and International Development Institute, with support from the U.S. Embassy Nepal',
+		date: 'July 10',
+		year: 2026,
+		location: 'Soaltee Westend Resort, Pathiani',
+		image: 'https://res.cloudinary.com/w6ej7kot/image/upload/PJO06807.jpg'
+	},
+	{
+		title: 'UNDP - RERAS - AI for Work Productivity',
+		kind: 'Workshop',
+		org: 'UNDP — Renewable Energy for Resilient Agri-food Systems (RERAS)',
+		date: 'July',
+		year: 2026,
+		location: 'Kathmandu, Nepal'
+	},
+	{
+		title: 'NIC - AI for Government',
+		kind: 'Workshop',
+		org: 'National Inclusion Commission (NIC)',
+		date: '12–15 June',
+		year: 2026,
+		location: 'Pulchowk, Lalitpur',
+		href: 'https://ninc.gov.np/'
+	},
+	{
+		title: 'GoN, MoWCSC - AI for Government',
+		kind: 'Workshop',
+		org: 'Government of Nepal — Ministry of Women, Children, Gender and Sexual Minorities, and Social Security',
+		date: '8–9 June',
+		year: 2026,
+		location: 'Yellow Pagoda Hotel, Kathmandu',
+		image: 'https://res.cloudinary.com/w6ej7kot/image/upload/WhatsApp_Image_2026-06-11_at_5.53.52_PM.jpg',
+		href: 'https://mowcsc.gov.np/'
+	},
+	{
+		title: 'AI in Health Research, Program Learning, Knowledge Generation, and Research Support',
+		kind: 'Workshop',
+		org: 'Possible Health',
+		date: 'April',
+		year: 2026,
+		location: 'Thamel, Kathmandu',
+		href: 'https://possiblehealth.org/'
+	},
+	{
+		title: 'Promoting academia-industry collaboration for higher education innovation in South Asia - 2026 Leadership Policy Dialogue in South Asia',
 		kind: 'Panel',
 		org: 'UNESCO, TU, ADB & UNESCO-ICHEI',
 		date: '20ᵗʰ May',
@@ -29,6 +103,14 @@ export const pastEngagements: PastEngagement[] = [
 			'Moderated by Dr. Kaushal Kumar Bhagat, IIT Kharagpur, India'
 		],
 		image: 'https://res.cloudinary.com/w6ej7kot/image/upload/UNESCOPanel.jpg'
+	},
+	{
+		title: 'Two Days Practical AI Applications Training',
+		kind: 'Workshop',
+		org: 'Karuna Foundation Nepal',
+		date: 'Jan',
+		year: 2026,
+		location: 'Kathmandu, Nepal'
 	},
 	{
 		title: 'AI and Diplomacy: Prospects and Challenges',
@@ -53,7 +135,10 @@ export const pastEngagements: PastEngagement[] = [
 		org: 'Public Seminar Series',
 		date: 'Ongoing',
 		year: 2023,
-		note: 'Recurring introductory sessions for general audiences'
+		note: 'Recurring introductory sessions for general audiences',
+		industry: 'Public education',
+		audience: 'General audiences and professionals beginning their AI learning',
+		objectives: ['Build an accessible foundation in artificial intelligence and generative AI']
 	},
 	{
 		title: 'Faculty Development: Research-based Training in AI',
@@ -63,6 +148,10 @@ export const pastEngagements: PastEngagement[] = [
 		year: 2024,
 		location: 'PUFOST, Biratnagar, Nepal',
 		note: 'University faculty cohort',
+		industry: 'Higher education',
+		audience: 'University faculty',
+		duration: 'Seven days',
+		objectives: ['Develop faculty capability through research-based training in AI'],
 		image: 'https://res.cloudinary.com/w6ej7kot/image/upload/PUFost.jpg'
 	},
 	{
@@ -71,14 +160,20 @@ export const pastEngagements: PastEngagement[] = [
 		org: 'Creator Mela · U.S. Embassy',
 		date: 'Jul 26–27, 2024',
 		year: 2024,
-		note: 'Digital creators & media professionals'
+		note: 'Digital creators & media professionals',
+		industry: 'Media and creative industries',
+		audience: 'Digital creators and media professionals',
+		objectives: ['Explore practical uses of AI for content creation']
 	},
 	{
 		title: 'AI for Future Leaders',
 		kind: 'Workshop',
 		org: 'Hidden Treasures — Miss Nepal Contestants 2024',
 		date: 'Jun 14, 2024',
-		year: 2024
+		year: 2024,
+		industry: 'Leadership development',
+		audience: 'Miss Nepal 2024 contestants and emerging leaders',
+		objectives: ['Explore how future leaders can understand and engage with AI responsibly']
 	},
 	{
 		title: 'AI & Misinformation',
@@ -130,6 +225,10 @@ export const pastEngagements: PastEngagement[] = [
 		date: 'May 2024',
 		year: 2024,
 		note: 'Trained 200 teachers from 180 schools',
+		industry: 'Education',
+		audience: 'School teachers',
+		participants: '200 teachers from 180 schools',
+		objectives: ['Explore how educators can enhance teaching with AI'],
 		image: 'https://res.cloudinary.com/w6ej7kot/image/upload/AI_4_Teachers.jpg'
 	},
 	{
@@ -138,6 +237,11 @@ export const pastEngagements: PastEngagement[] = [
 		org: 'Armed Police Force Nepal — APF Academy',
 		date: 'Feb 28 & Sep 25, 2024',
 		year: 2024,
+		industry: 'Government and public security',
+		audience: 'Security and defense professionals',
+		objectives: [
+			'Build practical understanding of artificial intelligence in a security and defense context'
+		],
 		image: 'https://res.cloudinary.com/w6ej7kot/image/upload/AI4APF.jpg'
 	},
 	{
@@ -145,7 +249,10 @@ export const pastEngagements: PastEngagement[] = [
 		kind: 'Workshop',
 		org: 'Research Organization',
 		date: 'Feb 4, 2024',
-		year: 2024
+		year: 2024,
+		industry: 'Research',
+		audience: 'Researchers and research professionals',
+		objectives: ['Introduce practical applications of AI in research workflows']
 	},
 	{
 		title:
@@ -162,14 +269,20 @@ export const pastEngagements: PastEngagement[] = [
 		kind: 'Workshop',
 		org: 'LCCI Global Qualification',
 		date: 'Nov 2023',
-		year: 2023
+		year: 2023,
+		industry: 'Professional education',
+		audience: 'Working professionals',
+		objectives: ['Explore practical ways to use AI in everyday professional workflows']
 	},
 	{
 		title: 'Master AI Tools for Work Productivity',
 		kind: 'Workshop',
 		org: 'Nepal Speakers Bureau',
 		date: '2023',
-		year: 2023
+		year: 2023,
+		industry: 'Professional development',
+		audience: 'Working professionals',
+		objectives: ['Build practical familiarity with AI tools for workplace productivity']
 	},
 	{
 		title: 'Mathematics Applications to AI',

@@ -2,6 +2,12 @@
 	import { mailto } from '$lib/site';
 	import Seo from '$lib/components/Seo.svelte';
 	import { onMount, untrack } from 'svelte';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import { webPageSchema } from '$lib/seo/schema';
+	const breadcrumbs = [
+		{ name: 'Home', path: '/' },
+		{ name: 'Programs', path: '/programs' }
+	];
 
 	let { data } = $props();
 	type Category = (typeof data.categories)[number];
@@ -44,9 +50,17 @@
 <Seo
 	title="AI Training Programs & Workshops in Nepal"
 	description="Corporate AI training, institutional workshops, academic courses and seminars delivered in Kathmandu, Nepal and online — practical AI capability for teams and universities."
+	jsonLd={webPageSchema({
+		path: '/programs',
+		name: 'AI Training Programs and Workshops in Nepal',
+		description:
+			'Corporate AI training, institutional workshops, academic courses and seminars delivered in Nepal and online.',
+		breadcrumbs
+	})}
 />
 
 <main class="programs-page">
+	<Breadcrumbs items={breadcrumbs} />
 	<header class="programs-hero container">
 		<p class="eyebrow">Education & Strategy</p>
 		<h1>Programs & Resources</h1>

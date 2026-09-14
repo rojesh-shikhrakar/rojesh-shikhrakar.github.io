@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rojesh-shikhrakar.github.io/sitemap.xml
+Sitemap: https://rojeshshikhrakar.com.np/sitemap.xml

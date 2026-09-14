@@ -1,20 +1,35 @@
 <script lang="ts">
 	import Seo from '$lib/components/Seo.svelte';
 	import portrait from '$lib/assets/rojesh-portrait.webp';
+	import { personDescription } from '$lib/site';
+	import { personSchema, webPageSchema } from '$lib/seo/schema';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import { professionalRoles } from '$lib/professional';
+	const breadcrumbs = [
+		{ name: 'Home', path: '/' },
+		{ name: 'About', path: '/about' }
+	];
+	const aboutSchema = webPageSchema({
+		path: '/about',
+		name: 'About Rojesh Man Shikhrakar',
+		description: personDescription,
+		breadcrumbs
+	});
+	aboutSchema['@graph'].push(personSchema(portrait));
 
 	const mandates = [
 		{
-			period: '2017 — Present',
-			title: 'Director of AI Education & Talent Development',
-			organization: 'Fusemachines',
-			body: 'Orchestrating global AI training initiatives, designing curricula for thousands of engineers, and bridging the technical-to-talent gap for international enterprises.',
+			period: professionalRoles[0].period,
+			title: professionalRoles[0].title,
+			organization: professionalRoles[0].organization,
+			body: professionalRoles[0].summary,
 			icon: 'building'
 		},
 		{
-			period: '2020 — Present',
-			title: 'Visiting / Adjunct Faculty',
-			organization: 'Kathmandu University',
-			body: 'Guiding the next generation of engineers through advanced coursework in machine learning and robotics, grounding academic theory in industrial reality.',
+			period: professionalRoles[1].period,
+			title: professionalRoles[1].title,
+			organization: professionalRoles[1].organization,
+			body: professionalRoles[1].summary,
 			icon: 'cap'
 		}
 	];
@@ -58,16 +73,21 @@
 <Seo
 	title="About Rojesh Man Shikhrakar — AI Trainer in Nepal"
 	description="A decade of AI engineering and education from Kathmandu, Nepal. The story, experience and working philosophy of AI trainer and consultant Rojesh Man Shikhrakar."
+	image={portrait}
+	type="profile"
+	jsonLd={aboutSchema}
 />
 
 <main>
+	<Breadcrumbs items={breadcrumbs} />
 	<section class="about-hero container">
 		<div>
 			<p class="eyebrow">Director & ML Engineer</p>
 			<h1>A decade bridging AI engineering, education, and institutional change.</h1>
 			<p class="lead">
-				A leader in the AI education landscape, navigating the intersection of complex machine
-				learning systems and the human frameworks required to master them.
+				I am an AI educator, researcher and enterprise AI practitioner based in Kathmandu. I work
+				with people who need to make AI useful in real classrooms, teams and institutions. Explore
+				my approach to <a href="/ai-trainer-nepal">organizational AI training in Nepal</a>.
 			</p>
 		</div>
 		<figure>
@@ -82,16 +102,16 @@
 			<h2>From mechanical systems to machine intelligence.</h2>
 			<div class="origin-copy">
 				<p>
-					My journey began in the world of physical systems. As a mechanical engineer, I was trained
-					to understand the rigid logic of thermodynamics and machine design. But data-driven
-					intelligence presented a new frontier—one where systems did not just follow laws; they
-					learned them.
+					I began as a mechanical engineer, where thermodynamics, control systems and machine design
+					taught me to ask how a system behaves and why. Machine learning gave me a different
+					version of the same question: what can a system learn from data, and when should we trust
+					it?
 				</p>
 				<p>
-					This transition was not just a pivot in technology; it was a pivot in pedagogy. I realized
-					that the greatest bottleneck in AI adoption was not the algorithms, but the collective
-					capability of institutions to deploy them meaningfully. This sparked a decade-long mission
-					to bridge high-level ML engineering and scalable talent development.
+					Teaching engineers and working with institutions showed me that the difficult part is
+					rarely a tool demonstration. It is helping people connect a new capability to their actual
+					work, review the result carefully and keep responsibility with the human making the
+					decision.
 				</p>
 			</div>
 		</div>

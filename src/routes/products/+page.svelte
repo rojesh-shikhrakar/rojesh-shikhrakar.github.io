@@ -1,5 +1,11 @@
 <script lang="ts">
 	import Seo from '$lib/components/Seo.svelte';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import { webPageSchema } from '$lib/seo/schema';
+	const breadcrumbs = [
+		{ name: 'Home', path: '/' },
+		{ name: 'Products', path: '/products' }
+	];
 	const tools = [
 		{
 			name: 'ODFIO.jl',
@@ -53,8 +59,16 @@
 <Seo
 	title="Products & Tools"
 	description="Open-source technical tools for Julia, Jupyter, documentation, and research workflows."
+	jsonLd={webPageSchema({
+		path: '/products',
+		name: 'Products and Tools',
+		description:
+			'Open-source technical tools for Julia, Jupyter, documentation and research workflows.',
+		breadcrumbs
+	})}
 />
 <main class="work-page">
+	<Breadcrumbs items={breadcrumbs} />
 	<header class="work-hero container">
 		<p class="eyebrow">Products & engineering</p>
 		<h1>Technical Tools & <em>Open Source.</em></h1>

@@ -1,25 +1,6 @@
 @import 'tailwindcss';
+@import './styles/tokens.css';
 @import './programs.css';
-
-:root {
-	--paper: #f7f4ee;
-	--surface: #fffdf9;
-	--border: #d2c8b9;
-	--ink: #121c26;
-	--ink-soft: #404946;
-	--ink-deep: #101820;
-	--teal: #00453b;
-	--teal-hover: #0b5f51;
-	--teal-light: #b1efe0;
-	--bronze: #77591e;
-	--bronze-light: #fed48c;
-	--success: #2f6f5e;
-	--serif: 'Newsreader', Georgia, serif;
-	--sans: 'Manrope', system-ui, sans-serif;
-	--container: 70rem;
-	--reading: 44rem;
-	--shadow: 0 1rem 3rem rgba(16, 24, 32, 0.07), 0 0.2rem 0.8rem rgba(16, 24, 32, 0.05);
-}
 
 * {
 	box-sizing: border-box;
@@ -55,7 +36,7 @@ a {
 	position: fixed;
 	top: 0.75rem;
 	left: 0.75rem;
-	z-index: 100;
+	z-index: var(--layer-skip-link);
 	padding: 0.7rem 1rem;
 	border-radius: 999px;
 	background: var(--ink-deep);
@@ -76,7 +57,7 @@ a {
 .site-header {
 	position: sticky;
 	top: 0;
-	z-index: 50;
+	z-index: var(--layer-header);
 	border-bottom: 1px solid color-mix(in srgb, var(--border) 85%, transparent);
 	background: color-mix(in srgb, var(--paper) 94%, transparent);
 	backdrop-filter: blur(12px);
@@ -102,6 +83,16 @@ a {
 }
 .desktop-nav > a:not(.button):hover {
 	color: var(--teal);
+}
+.desktop-nav > a.active,
+.nav-dropdown.active > summary {
+	color: var(--teal);
+	font-weight: 700;
+}
+.desktop-nav > a.active {
+	text-decoration: underline;
+	text-decoration-thickness: 2px;
+	text-underline-offset: 0.45rem;
 }
 .button {
 	display: inline-flex;
@@ -173,6 +164,12 @@ a {
 .mobile-nav-panel a {
 	padding: 0.65rem 0.75rem;
 }
+.mobile-nav-panel a.active {
+	border-radius: 0.4rem;
+	background: var(--paper);
+	color: var(--teal);
+	font-weight: 700;
+}
 .hero {
 	display: grid;
 	grid-template-columns: 7fr 5fr;
@@ -201,6 +198,9 @@ h1 {
 	font-size: clamp(3.5rem, 4vw, 5.25rem);
 	line-height: 1.03;
 	letter-spacing: -0.035em;
+}
+.hero-copy .button-row {
+	margin-top: 2rem;
 }
 h2 {
 	font-size: clamp(2.25rem, 4.2vw, 3.25rem);
@@ -301,7 +301,7 @@ h3 {
 	text-transform: uppercase;
 }
 .section {
-	padding-block: clamp(4.5rem, 9vw, 7.5rem);
+	padding-block: var(--space-section);
 	scroll-margin-top: 5rem;
 }
 .positioning {
@@ -332,11 +332,20 @@ h3 {
 	padding: 2rem;
 	border: 1px solid var(--border);
 	border-top: 4px solid #cda275;
-	border-radius: 1rem;
+	border-radius: var(--radius-card);
 	background: var(--paper);
 	transition:
 		transform 180ms ease,
 		box-shadow 180ms ease;
+}
+.card-icon svg {
+	width: 1.75rem;
+	height: 1.75rem;
+	fill: none;
+	stroke: currentColor;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 1.6;
 }
 .program-card:hover {
 	box-shadow: var(--shadow);
@@ -366,9 +375,15 @@ h3 {
 	display: flex;
 	gap: 0.65rem;
 }
-.program-card li span {
+.program-card li svg {
+	width: 1rem;
+	height: 1rem;
+	fill: none;
 	color: var(--teal);
-	font-weight: 700;
+	stroke: currentColor;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 2;
 }
 .impact {
 	padding-bottom: 0;
@@ -596,6 +611,14 @@ h3 {
 	.hero {
 		padding-top: 3.75rem;
 	}
+	.hero h1 {
+		font-size: clamp(2.7rem, 12vw, 3.25rem);
+		line-height: 1.01;
+	}
+	.hero .eyebrow {
+		max-width: 28ch;
+		letter-spacing: 0.12em;
+	}
 	.button-row .button {
 		width: 100%;
 	}
@@ -621,6 +644,28 @@ h3 {
 	.site-footer nav {
 		gap: 1rem 1.5rem;
 	}
+}
+
+.impact-marker {
+	display: grid;
+	min-height: 20rem;
+	place-content: center;
+	gap: 0.75rem;
+	border: 1px solid var(--border);
+	background: var(--teal);
+	color: white;
+	text-align: center;
+}
+.impact-marker span {
+	font-family: var(--serif);
+	font-size: clamp(4rem, 9vw, 8rem);
+	line-height: 1;
+}
+.impact-marker small {
+	font-size: 0.8rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
 }
 
 /* Shared navigation menus */
