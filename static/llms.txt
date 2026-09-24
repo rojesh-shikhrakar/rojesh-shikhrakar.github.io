@@ -1,0 +1,29 @@
+# Rojesh Man Shikhrakar
+
+> AI trainer, AI expert and educator based in Kathmandu, Nepal. Director of AI Education & Talent Development at Fusemachines (since 2017), visiting faculty in machine learning at Kathmandu University, and Senior AI Consultant with Nepal Speakers Bureau. Has trained 1,500+ AI engineers across 15+ countries through the Fusemachines AI Fellowship, and delivers corporate, enterprise, government and NGO AI training across Nepal.
+
+Also known as: Rojesh Shikhrakar. Location: Kathmandu, Nepal. Contact: mail@rojeshshikhrakar.com.np. LinkedIn: https://www.linkedin.com/in/rojeshshikhrakar/
+
+Topics: generative AI and ChatGPT/Claude for work, prompt engineering, AI productivity, AI strategy for leaders, AI governance and responsible AI, machine learning and deep learning for engineers, AI in higher education. Delivery: in-person in Kathmandu and across Nepal, or online for international teams.
+
+## AI training in Nepal
+
+- [AI Trainer in Nepal](https://rojeshshikhrakar.com.np/ai-trainer-nepal): Overview of AI training for organizations and professionals in Nepal
+- [Corporate AI Training in Nepal](https://rojeshshikhrakar.com.np/corporate-ai-training-nepal): Generative AI in real team workflows
+- [Enterprise AI Training in Nepal](https://rojeshshikhrakar.com.np/enterprise-ai-training-nepal): Readiness, strategy, adoption and governance
+- [AI Productivity Training in Nepal](https://rojeshshikhrakar.com.np/ai-productivity-training-nepal): Repeatable AI workflows for research, writing and analysis
+- [AI Governance Training in Nepal](https://rojeshshikhrakar.com.np/ai-governance-training-nepal): Responsible use, privacy, risk and oversight
+- [AI Training for Government & NGOs in Nepal](https://rojeshshikhrakar.com.np/ai-training-government-ngos-nepal): Mission-aligned AI adoption for public and development organizations
+- [Workshop catalogue](https://rojeshshikhrakar.com.np/workshops): ChatGPT, Claude, Google AI, AI for research and institutional AI strategy workshops
+
+## Evidence
+
+- [About](https://rojeshshikhrakar.com.np/about): Background, roles and education
+- [Past engagements](https://rojeshshikhrakar.com.np/engagements): Organizations trained
+- [Case studies](https://rojeshshikhrakar.com.np/case-studies): Program outcomes
+- [Research](https://rojeshshikhrakar.com.np/research): Publications
+
+## Optional
+
+- [Insights](https://rojeshshikhrakar.com.np/insights): Articles on AI adoption and leadership
+- [Programs](https://rojeshshikhrakar.com.np/programs): Courses, seminars and workshops

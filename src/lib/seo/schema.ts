@@ -9,14 +9,27 @@ export const personSchema = (image?: string) => ({
 	'@type': 'Person',
 	'@id': personId,
 	name: siteName,
+	alternateName: ['Rojesh Shikhrakar', 'Rojesh M. Shikhrakar'],
 	url: siteUrl,
 	...(image ? { image: absoluteUrl(image) } : {}),
-	jobTitle: ['AI Educator', 'AI Trainer', 'Enterprise AI Practitioner'],
+	jobTitle: [
+		'AI Trainer',
+		'AI Expert',
+		'AI Educator',
+		'AI Consultant',
+		'Machine Learning Engineer'
+	],
 	description: personDescription,
 	address: { '@type': 'PostalAddress', addressLocality: 'Kathmandu', addressCountry: 'NP' },
+	nationality: { '@type': 'Country', name: 'Nepal' },
 	worksFor: { '@type': 'Organization', name: 'Fusemachines' },
+	affiliation: { '@type': 'CollegeOrUniversity', name: 'Kathmandu University' },
 	knowsAbout: [
 		'Artificial Intelligence',
+		'AI Training',
+		'Generative AI',
+		'Large Language Models',
+		'Prompt Engineering',
 		'Enterprise AI',
 		'Organizational AI Adoption',
 		'AI Productivity',
@@ -35,6 +48,29 @@ export const websiteSchema = () => ({
 	publisher: { '@id': personId }
 });
 
+export const faqSchema = (faqs: Array<{ question: string; answer: string }>) => ({
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((faq) => ({
+		'@type': 'Question',
+		name: faq.question,
+		acceptedAnswer: { '@type': 'Answer', text: faq.answer }
+	}))
+});
+
+export const serviceSchema = (input: { path: string; name: string; description: string }) => ({
+	'@type': 'Service',
+	'@id': `${absoluteUrl(input.path)}#service`,
+	name: input.name,
+	description: input.description,
+	serviceType: 'AI Training',
+	provider: { '@id': personId },
+	areaServed: [
+		{ '@type': 'City', name: 'Kathmandu' },
+		{ '@type': 'Country', name: 'Nepal' }
+	],
+	url: absoluteUrl(input.path)
+});
+
 export const breadcrumbSchema = (items: BreadcrumbItem[]) => ({
 	'@type': 'BreadcrumbList',
 	itemListElement: items.map((item, index) => ({
@@ -50,6 +86,7 @@ export const webPageSchema = (input: {
 	name: string;
 	description: string;
 	breadcrumbs?: BreadcrumbItem[];
+	extra?: Array<Record<string, unknown>>;
 }) => ({
 	'@context': 'https://schema.org',
 	'@graph': [
@@ -64,7 +101,8 @@ export const webPageSchema = (input: {
 			isPartOf: { '@id': `${siteUrl}/#website` },
 			about: { '@id': personId }
 		},
-		...(input.breadcrumbs ? [breadcrumbSchema(input.breadcrumbs)] : [])
+		...(input.breadcrumbs ? [breadcrumbSchema(input.breadcrumbs)] : []),
+		...(input.extra ?? [])
 	]
 });
 

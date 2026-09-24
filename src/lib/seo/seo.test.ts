@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { breadcrumbSchema, webPageSchema } from './schema';
+import { breadcrumbSchema, faqSchema, serviceSchema, webPageSchema } from './schema';
 import { seoTargets } from './targets';
 import { siteUrl } from '$lib/site';
 
@@ -25,5 +25,21 @@ describe('SEO architecture', () => {
 		expect(schema['@graph'].find((node) => node['@type'] === 'WebPage')).toMatchObject({
 			url: `${siteUrl}/about`
 		});
+	});
+});
+
+describe('training page rich results', () => {
+	it('adds FAQ and Service nodes to the WebPage graph', () => {
+		const schema = webPageSchema({
+			path: '/ai-trainer-nepal',
+			name: 'AI Trainer',
+			description: 'd',
+			extra: [
+				serviceSchema({ path: '/ai-trainer-nepal', name: 'AI Trainer', description: 'd' }),
+				faqSchema([{ question: 'Q?', answer: 'A.' }])
+			]
+		});
+		const types = schema['@graph'].map((node) => node['@type']);
+		expect(types).toEqual(expect.arrayContaining(['Service', 'FAQPage']));
 	});
 });

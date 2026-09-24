@@ -7,7 +7,7 @@
 	import TrainingFaq from '$lib/components/training/TrainingFaq.svelte';
 	import portrait from '$lib/assets/rojesh-portrait.webp';
 	import { mailto } from '$lib/site';
-	import { webPageSchema, type BreadcrumbItem } from '$lib/seo/schema';
+	import { faqSchema, serviceSchema, webPageSchema, type BreadcrumbItem } from '$lib/seo/schema';
 	import type { TrainingPage, TrainingSection } from '$lib/training-pages';
 
 	let { page }: { page: TrainingPage } = $props();
@@ -68,7 +68,11 @@
 		path: page.href,
 		name: page.h1,
 		description: page.description,
-		breadcrumbs
+		breadcrumbs,
+		extra: [
+			serviceSchema({ path: page.href, name: page.h1, description: page.description }),
+			...(sections.includes('faq') ? [faqSchema(faqs)] : [])
+		]
 	})}
 />
 

@@ -14,7 +14,7 @@ export const siteUrl = 'https://rojeshshikhrakar.com.np';
 export const personId = `${siteUrl}/#rojesh-shikhrakar`;
 
 export const personDescription =
-	'Rojesh Shikhrakar is an AI educator, researcher, enterprise AI practitioner and AI trainer from Nepal specializing in organizational AI adoption, AI productivity, responsible AI and AI capability development.';
+	'Rojesh Man Shikhrakar is an AI trainer, AI expert and educator based in Kathmandu, Nepal — Director of AI Education at Fusemachines and visiting faculty at Kathmandu University — specializing in organizational AI adoption, AI productivity, responsible AI and AI capability development.';
 
 export const socialProfiles = [
 	'https://www.linkedin.com/in/rojeshshikhrakar/',

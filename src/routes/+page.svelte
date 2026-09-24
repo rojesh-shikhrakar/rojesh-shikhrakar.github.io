@@ -45,8 +45,8 @@
 </script>
 
 <Seo
-	title="AI Trainer & Consultant in Kathmandu, Nepal | Rojesh Man Shikhrakar"
-	description="Rojesh Man Shikhrakar is an AI trainer, engineer and consultant based in Kathmandu, Nepal, delivering corporate AI training, workshops and machine learning programs across Nepal and beyond."
+	title="AI Trainer & AI Expert in Kathmandu, Nepal | Rojesh Man Shikhrakar"
+	description="Rojesh Man Shikhrakar is an AI trainer and AI expert in Kathmandu, Nepal. He has trained 1,500+ AI engineers and delivers corporate AI training, generative AI workshops and machine learning programs."
 	image={portrait}
 	type="profile"
 	jsonLd={homeSchema}
