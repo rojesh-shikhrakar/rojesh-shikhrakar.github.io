@@ -27,6 +27,14 @@ export type PastEngagement = {
 
 export const pastEngagements: PastEngagement[] = [
 	{
+		title: 'Training Program on “Data Governance and AI”',
+		kind: 'Course',
+		org: 'Nepal Rastra Bank, Bankers, Training Center',
+		date: '1-2 October',
+		year: 2026,
+		location: 'Nepal Rastra Bank, Thapathali',
+		href: 'https://www.nrb.org.np/',
+	},{
 		title: 'Data Acquisition and Management System',
 		kind: 'Course',
 		org: 'M.Tech Course · KU DoAI',

@@ -1389,6 +1389,23 @@ h3 {
 .prose blockquote p {
 	margin: 0;
 }
+.prose table {
+	display: block;
+	overflow-x: auto;
+	width: 100%;
+	margin-block: 0 1.6rem;
+	border-collapse: collapse;
+	font-size: 0.9rem;
+}
+.prose :is(th, td) {
+	padding: 0.6rem 0.75rem;
+	border-bottom: 1px solid var(--border);
+	text-align: left;
+	vertical-align: top;
+}
+.prose th {
+	background: var(--surface);
+}
 .prose img {
 	width: 100%;
 	margin-block: 2.5rem 0.75rem;
