@@ -1,12 +1,11 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { siteName, siteUrl } from '$lib/site';
-	import defaultImage from '$lib/assets/rojesh-portrait.webp';
+	import { ogImage, siteName, siteUrl } from '$lib/site';
 
 	let {
 		title,
 		description,
-		image = defaultImage,
+		image = ogImage,
 		type = 'website',
 		canonical,
 		noindex = false,

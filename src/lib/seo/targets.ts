@@ -1,5 +1,6 @@
 export const seoTargets = {
 	'/ai-trainer-nepal': 'ai trainer nepal',
+	'/ai-consultant-nepal': 'ai consultant nepal',
 	'/corporate-ai-training-nepal': 'corporate ai training nepal',
 	'/enterprise-ai-training-nepal': 'enterprise ai training nepal',
 	'/ai-training-government-ngos-nepal': 'government ngo ai training nepal',

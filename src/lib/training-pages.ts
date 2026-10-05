@@ -13,6 +13,7 @@ export type TrainingPageMetadata = {
 	cta: string;
 	navLabel: string;
 	navOrder?: number;
+	serviceType?: string;
 	draft?: boolean;
 	layout?: {
 		hero?: 'portrait' | 'text';

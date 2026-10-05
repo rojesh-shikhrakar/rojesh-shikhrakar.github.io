@@ -40,14 +40,13 @@
 
 	const homeSchema = {
 		'@context': 'https://schema.org',
-		'@graph': [websiteSchema(), personSchema(portrait)]
+		'@graph': [websiteSchema(), personSchema()]
 	};
 </script>
 
 <Seo
-	title="AI Trainer & AI Expert in Kathmandu, Nepal | Rojesh Man Shikhrakar"
-	description="Rojesh Man Shikhrakar is an AI trainer and AI expert in Kathmandu, Nepal. He has trained 1,500+ AI engineers and delivers corporate AI training, generative AI workshops and machine learning programs."
-	image={portrait}
+	title="Rojesh Man Shikhrakar | AI Trainer, AI Expert & AI Consultant in Nepal"
+	description="Rojesh Man Shikhrakar is an AI trainer, AI expert and AI consultant in Kathmandu, Nepal. Director of AI Education at Fusemachines, he has trained 1,500+ AI engineers and advises organizations on AI strategy, adoption and governance."
 	type="profile"
 	jsonLd={homeSchema}
 />
@@ -55,12 +54,16 @@
 <main id="main-content">
 	<section class="hero container">
 		<div class="hero-copy">
-			<p class="eyebrow">AI educator & enterprise practitioner &middot; Kathmandu</p>
+			<p class="eyebrow">
+				AI trainer &middot; AI expert &middot; AI consultant &middot; Kathmandu, Nepal
+			</p>
 			<h1>I turn AI complexity into organizational capability.</h1>
 			<p class="lead">
-				I help people move beyond impressive AI demos and use the technology in work that actually
-				matters. My <a href="/ai-trainer-nepal">AI training for organizations in Nepal</a>
-				connects practical workflows with careful review, governance and technical understanding.
+				I'm Rojesh Man Shikhrakar, an AI trainer, AI expert and AI consultant based in Kathmandu,
+				Nepal. I help people move beyond impressive AI demos and use the technology in work that
+				actually matters. My <a href="/ai-trainer-nepal">AI training for organizations in Nepal</a>
+				and <a href="/ai-consultant-nepal">AI consulting</a> connect practical workflows with careful
+				review, governance and technical understanding.
 			</p>
 			<div class="button-row">
 				<a class="button" href={mailto('AI training program')}>Discuss a Training Program</a>

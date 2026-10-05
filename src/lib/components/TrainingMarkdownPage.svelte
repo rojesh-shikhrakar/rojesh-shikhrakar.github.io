@@ -63,14 +63,18 @@
 <Seo
 	title={page.title}
 	description={page.description}
-	image={portrait}
 	jsonLd={webPageSchema({
 		path: page.href,
 		name: page.h1,
 		description: page.description,
 		breadcrumbs,
 		extra: [
-			serviceSchema({ path: page.href, name: page.h1, description: page.description }),
+			serviceSchema({
+				path: page.href,
+				name: page.h1,
+				description: page.description,
+				serviceType: page.serviceType
+			}),
 			...(sections.includes('faq') ? [faqSchema(faqs)] : [])
 		]
 	})}

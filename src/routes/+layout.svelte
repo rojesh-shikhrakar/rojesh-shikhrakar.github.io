@@ -17,6 +17,7 @@
 			label: 'Training',
 			children: [
 				{ label: 'Training Overview', href: resolve('/ai-trainer-nepal') },
+				{ label: 'AI Consulting', href: resolve('/ai-consultant-nepal') },
 				{ label: 'Corporate Teams', href: resolve('/corporate-ai-training-nepal') },
 				{ label: 'Enterprise Capability', href: resolve('/enterprise-ai-training-nepal') },
 				{ label: 'Government & NGOs', href: resolve('/ai-training-government-ngos-nepal') },
@@ -47,6 +48,7 @@
 		{ label: 'About', href: resolve('/about') },
 		{ label: 'Past Engagements', href: resolve('/engagements') },
 		{ label: 'AI Training', href: resolve('/ai-trainer-nepal') },
+		{ label: 'AI Consulting', href: resolve('/ai-consultant-nepal') },
 		{ label: 'Case Studies', href: resolve('/case-studies') },
 		{ label: 'Selected Works', href: resolve('/') + '#impact' },
 		{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/rojeshshikhrakar' }

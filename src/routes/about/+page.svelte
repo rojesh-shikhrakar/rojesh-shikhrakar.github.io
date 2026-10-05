@@ -2,7 +2,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import portrait from '$lib/assets/rojesh-portrait.webp';
 	import { personDescription } from '$lib/site';
-	import { personSchema, webPageSchema } from '$lib/seo/schema';
+	import { webPageSchema } from '$lib/seo/schema';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import { professionalRoles } from '$lib/professional';
 	const breadcrumbs = [
@@ -13,9 +13,9 @@
 		path: '/about',
 		name: 'About Rojesh Man Shikhrakar',
 		description: personDescription,
-		breadcrumbs
+		breadcrumbs,
+		pageType: 'ProfilePage'
 	});
-	aboutSchema['@graph'].push(personSchema(portrait));
 
 	const mandates = [
 		{
@@ -86,9 +86,8 @@
 </script>
 
 <Seo
-	title="About Rojesh Man Shikhrakar — AI Trainer in Nepal"
+	title="About Rojesh Man Shikhrakar — AI Trainer, AI Expert & AI Consultant in Nepal"
 	description="A decade of AI engineering and education from Kathmandu, Nepal. The story, experience and working philosophy of AI trainer and consultant Rojesh Man Shikhrakar."
-	image={portrait}
 	type="profile"
 	jsonLd={aboutSchema}
 />

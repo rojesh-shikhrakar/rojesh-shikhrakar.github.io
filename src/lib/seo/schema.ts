@@ -1,32 +1,56 @@
-import { personDescription, personId, siteName, siteUrl, socialProfiles } from '$lib/site';
+import {
+	contactEmail,
+	personDescription,
+	personId,
+	profileImage,
+	siteName,
+	siteUrl,
+	socialProfiles
+} from '$lib/site';
 
 export type BreadcrumbItem = { name: string; path: string };
 
 export const absoluteUrl = (path: string) =>
 	path.startsWith('http') ? path : `${siteUrl}${path === '/' ? '/' : path.replace(/\/$/, '')}`;
 
-export const personSchema = (image?: string) => ({
+export const personSchema = (image: string = profileImage) => ({
 	'@type': 'Person',
 	'@id': personId,
 	name: siteName,
 	alternateName: ['Rojesh Shikhrakar', 'Rojesh M. Shikhrakar'],
 	url: siteUrl,
-	...(image ? { image: absoluteUrl(image) } : {}),
-	jobTitle: [
+	image: absoluteUrl(image),
+	email: contactEmail,
+	jobTitle: 'Director of AI Education & Talent Development',
+	hasOccupation: [
 		'AI Trainer',
 		'AI Expert',
-		'AI Educator',
 		'AI Consultant',
+		'AI Educator',
 		'Machine Learning Engineer'
-	],
+	].map((name) => ({
+		'@type': 'Occupation',
+		name,
+		occupationLocation: { '@type': 'Country', name: 'Nepal' }
+	})),
 	description: personDescription,
 	address: { '@type': 'PostalAddress', addressLocality: 'Kathmandu', addressCountry: 'NP' },
 	nationality: { '@type': 'Country', name: 'Nepal' },
-	worksFor: { '@type': 'Organization', name: 'Fusemachines' },
-	affiliation: { '@type': 'CollegeOrUniversity', name: 'Kathmandu University' },
+	worksFor: { '@type': 'Organization', name: 'Fusemachines', url: 'https://fusemachines.com/' },
+	affiliation: [
+		{ '@type': 'CollegeOrUniversity', name: 'Kathmandu University', url: 'https://ku.edu.np/' },
+		{ '@type': 'Organization', name: 'Nepal Speakers Bureau', url: 'https://nepalspeakers.com/' }
+	],
+	hasCredential: {
+		'@type': 'EducationalOccupationalCredential',
+		name: 'ColumbiaX MicroMasters in Artificial Intelligence',
+		recognizedBy: { '@type': 'CollegeOrUniversity', name: 'Columbia University' }
+	},
 	knowsAbout: [
 		'Artificial Intelligence',
 		'AI Training',
+		'AI Consulting',
+		'AI Strategy',
 		'Generative AI',
 		'Large Language Models',
 		'Prompt Engineering',
@@ -57,12 +81,17 @@ export const faqSchema = (faqs: Array<{ question: string; answer: string }>) => 
 	}))
 });
 
-export const serviceSchema = (input: { path: string; name: string; description: string }) => ({
+export const serviceSchema = (input: {
+	path: string;
+	name: string;
+	description: string;
+	serviceType?: string;
+}) => ({
 	'@type': 'Service',
 	'@id': `${absoluteUrl(input.path)}#service`,
 	name: input.name,
 	description: input.description,
-	serviceType: 'AI Training',
+	serviceType: input.serviceType ?? 'AI Training',
 	provider: { '@id': personId },
 	areaServed: [
 		{ '@type': 'City', name: 'Kathmandu' },
@@ -86,6 +115,7 @@ export const webPageSchema = (input: {
 	name: string;
 	description: string;
 	breadcrumbs?: BreadcrumbItem[];
+	pageType?: 'WebPage' | 'ProfilePage' | 'AboutPage';
 	extra?: Array<Record<string, unknown>>;
 }) => ({
 	'@context': 'https://schema.org',
@@ -93,13 +123,14 @@ export const webPageSchema = (input: {
 		websiteSchema(),
 		personSchema(),
 		{
-			'@type': 'WebPage',
+			'@type': input.pageType ?? 'WebPage',
 			'@id': `${absoluteUrl(input.path)}#webpage`,
 			url: absoluteUrl(input.path),
 			name: input.name,
 			description: input.description,
 			isPartOf: { '@id': `${siteUrl}/#website` },
-			about: { '@id': personId }
+			about: { '@id': personId },
+			...(input.pageType === 'ProfilePage' ? { mainEntity: { '@id': personId } } : {})
 		},
 		...(input.breadcrumbs ? [breadcrumbSchema(input.breadcrumbs)] : []),
 		...(input.extra ?? [])
