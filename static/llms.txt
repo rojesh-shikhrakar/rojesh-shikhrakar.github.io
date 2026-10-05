@@ -6,7 +6,7 @@
 
 - Name: Rojesh Man Shikhrakar (also written Rojesh Shikhrakar, Rojesh M. Shikhrakar)
 - Location: Kathmandu, Nepal
-- Roles: AI trainer, AI expert, AI consultant, AI educator, machine learning engineer
+- Roles: AI trainer, AI expert, AI consultant, AI keynote speaker, AI educator, machine learning engineer
 - Current positions: Director of AI Education & Talent Development, Fusemachines; Subject Committee Member and Visiting Faculty, Kathmandu University; AI Subject Committee Lead, Industry Integrated Degree (NASIT & NOU); Senior AI Consultant, Nepal Speakers Bureau
 - Experience: 10 years in AI engineering and education; 1,500+ AI engineers trained in 15+ countries
 - Credentials: ColumbiaX MicroMasters in Artificial Intelligence; M.Sc. and B.Tech. in Mechanical Engineering
@@ -20,6 +20,7 @@
 
 - [AI Trainer in Nepal](https://rojeshshikhrakar.com.np/ai-trainer-nepal): Overview of AI training for organizations and professionals in Nepal
 - [AI Consultant in Nepal](https://rojeshshikhrakar.com.np/ai-consultant-nepal): AI strategy, readiness, use-case prioritization, governance and capability-building advisory
+- [AI Keynote Speaker in Nepal](https://rojeshshikhrakar.com.np/ai-keynote-speaker-nepal): Keynotes, panels and talks on generative AI, AI productivity, AI and misinformation, AI in government and education
 - [Corporate AI Training in Nepal](https://rojeshshikhrakar.com.np/corporate-ai-training-nepal): Generative AI in real team workflows
 - [Enterprise AI Training in Nepal](https://rojeshshikhrakar.com.np/enterprise-ai-training-nepal): Readiness, strategy, adoption and governance
 - [AI Productivity Training in Nepal](https://rojeshshikhrakar.com.np/ai-productivity-training-nepal): Repeatable AI workflows for research, writing and analysis

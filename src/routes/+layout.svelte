@@ -18,6 +18,7 @@
 			children: [
 				{ label: 'Training Overview', href: resolve('/ai-trainer-nepal') },
 				{ label: 'AI Consulting', href: resolve('/ai-consultant-nepal') },
+				{ label: 'Keynotes & Talks', href: resolve('/ai-keynote-speaker-nepal') },
 				{ label: 'Corporate Teams', href: resolve('/corporate-ai-training-nepal') },
 				{ label: 'Enterprise Capability', href: resolve('/enterprise-ai-training-nepal') },
 				{ label: 'Government & NGOs', href: resolve('/ai-training-government-ngos-nepal') },

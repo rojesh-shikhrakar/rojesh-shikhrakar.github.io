@@ -26,6 +26,7 @@ export const personSchema = (image: string = profileImage) => ({
 		'AI Trainer',
 		'AI Expert',
 		'AI Consultant',
+		'AI Keynote Speaker',
 		'AI Educator',
 		'Machine Learning Engineer'
 	].map((name) => ({
